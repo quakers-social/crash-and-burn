@@ -1,10 +1,13 @@
 ---
 
-
-name: Run Ansible in try mod
-run-name: ${{ github.actor }} dry run.
+name: Run Ansible
+run-name: ${{ github.actor }} run setuo VM.
+# on:
+#   push:
+#     tags:
+#       - '*'
 jobs:
-  Explore-GitHub-Actions:
+  dryRun:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,16 +30,10 @@ jobs:
             --inventory .hosts
             --verbose
             --check
-
-
-
-name: Run Ansible
-run-name: ${{ github.actor }} run setuo VM.
-on:
-  push:
-    tags:
-      - '*'
-  Explore-GitHub-Actions:
+  setupRemote:
+    if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
+    needs:
+      - dryRun
     runs-on: ubuntu-latest
     steps:
       # - name: Checkout
