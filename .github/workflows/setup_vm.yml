@@ -28,7 +28,7 @@ jobs:
           known_hosts: |
             mastodon.the-independent-friend.de ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJAcpDId6LxMxyI8RnRq7GZctKMS5eOZa+hX/1G5fYGf
           options: |
-            --inventory .hosts
+            --inventory ./hosts.yaml
             --verbose
             --check
   setupRemote:
@@ -72,7 +72,7 @@ jobs:
           # requirements: galaxy-requirements.yml
           # Optional, additional flags to pass to ansible-playbook
           options: |
-            --inventory .hosts
+            --inventory ./hosts.yaml
             --extra-vars hello=there
             --verbose
             --diff
