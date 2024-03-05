@@ -32,7 +32,7 @@ jobs:
             --verbose
             --check
   setupRemote:
-    if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
+    if: startsWith(github.ref, 'refs/tags/*')
     needs:
       - dryRun
     runs-on: ubuntu-latest
