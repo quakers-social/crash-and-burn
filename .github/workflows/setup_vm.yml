@@ -2,6 +2,7 @@
 
 name: Run Ansible
 run-name: ${{ github.actor }} run setuo VM.
+on: push
 # on:
 #   push:
 #     tags:
