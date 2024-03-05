@@ -29,7 +29,7 @@ jobs:
             mastodon.the-independent-friend.de ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJAcpDId6LxMxyI8RnRq7GZctKMS5eOZa+hX/1G5fYGf
           options: |
             --inventory ./hosts.yaml
-            --verbose
+            -vvvv
             --check
   setupRemote:
     if: github.ref_type == 'tag'
@@ -74,5 +74,4 @@ jobs:
           options: |
             --inventory ./hosts.yaml
             --extra-vars hello=there
-            --verbose
             --diff
