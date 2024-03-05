@@ -22,7 +22,7 @@ jobs:
         uses: dawidd6/action-ansible-playbook@v2
         with:
           # Required, playbook filepath
-          playbook: ansible/install_and_update.yaml
+          playbook: install_and_update.yaml
           # Optional, directory where playbooks live
           directory: ./ansible
           # Optional, ansible configuration file content (ansible.cfg)
