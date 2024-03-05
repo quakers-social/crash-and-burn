@@ -1,0 +1,52 @@
+---
+
+
+- name:           reset private pki ca
+  ansible.builtin.file:
+    path:         "{{ k3s_mtls_dir }}"
+    state:        absent
+  when:           k3s_mtls_private_pki_reset == "yes"
+
+- name:           create a directory for private pki ca
+  ansible.builtin.file:
+    path:         "{{ k3s_mtls_dir }}"
+    state:        directory
+
+
+- name:           create mtls-root-ca
+  ansible.builtin.shell: |
+                  step  certificate create             \
+                  "mTLS root CA"                       \
+                  {{ k3s_mtls_dir }}/mtls-root-ca.crt  \
+                  {{ k3s_mtls_dir }}/mtls-root-ca.key  \
+                  --no-password                        \
+                  --insecure                           \
+                  --profile root-ca                    \
+                  --san mtls-root_ca.olaf-radicke.de   \
+                  --not-after 87600h                   \
+                  --kty RSA                            \
+                  --size 4096                          \
+                  --force
+  args:
+    creates:      "{{ k3s_mtls_dir }}/mtls-root-ca.crt"
+
+- name:           check mtls-root-ca.crt
+  ansible.builtin.shell: |
+                  step certificate inspect --short {{ k3s_mtls_dir }}/mtls-root-ca.crt
+  register:       shell_result
+
+- debug:
+    msg:          "{{ shell_result }}"
+  when:
+    -             shell_result is defined
+    -             debug_mode is defined
+
+- name:           convert mtls-root-ca to PEM
+  ansible.builtin.shell: |
+                  step crypto key format                    \
+                  {{ k3s_mtls_dir }}/mtls-root-ca.crt       \
+                  --out {{ k3s_mtls_dir }}/mtls-root-ca.pem \
+                  --insecure                                \
+                  --no-password
+  args:
+    creates:      "{{ k3s_mtls_dir }}/mtls-root-ca.pem"

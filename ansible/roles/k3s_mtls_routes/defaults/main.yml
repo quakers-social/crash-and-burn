@@ -1,0 +1,15 @@
+---
+
+k3s_kubeconfig:       "/etc/rancher/k3s/k3s.yaml"
+k3s_namespace:        "testing"
+k3s_acme_email:       youremmail@gmail.com
+# can be "present" or "absent"
+k3s_deployment_state: "present"
+# can be "yes" or "no"
+k3s_native_ingress:   "no"
+# can be "yes" or "no"
+k3s_traefik:          "yes"
+# can be "yes" or "no"
+k3s_letsencrypt:      "yes"
+# can be "production" or "staging"
+k3s_acme_tier:        "staging"

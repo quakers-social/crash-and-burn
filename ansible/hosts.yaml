@@ -1,0 +1,7 @@
+
+---
+
+all:
+  hosts:
+    localhost:
+    ubuntu-4gb-hel1-3:
