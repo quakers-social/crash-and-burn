@@ -2,4 +2,5 @@ DOCUMENTATION
 =============
 
 - [Virtual machines](doc/vm.md)
-- [Ansible Playbook]()
+- [Ansible Playbook](doc/ansible.md)
+- [K3s](doc/k3s.md)

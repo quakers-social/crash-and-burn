@@ -1,6 +1,6 @@
 ---
 
 - name: Run uninstall
-  hosts: all
+  hosts: hetzner
   roles:
     - k3s_uninstall

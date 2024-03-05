@@ -16,4 +16,10 @@ k3s_namespaces:
   -                               "live"
 
 
+# ---- K3s ----
 
+k3s_install_with_pull_secret:     false
+
+# ---- letsencrypt ----
+
+k3s_cert_manager_mail:            "breiefkasten@olaf-radicke.de"

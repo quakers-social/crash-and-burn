@@ -5,6 +5,7 @@
 
 - name: Setup secret for image pull
   include_tasks: secret_for_image_pull.yaml
+  when: k3s_install_with_pull_secret == true
 
 - name: Setup local storage support
   include_tasks: local_storage_path.yaml

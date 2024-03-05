@@ -35,6 +35,10 @@ ansible-playbook \
   ./ansible/install_and_update.yaml
 ```
 
+You find after the playbook run the generated Kubernetes configuration in
+the directory `./ansible/downloads/`
+
+
 KNOWN ISSUE
 -----------
 

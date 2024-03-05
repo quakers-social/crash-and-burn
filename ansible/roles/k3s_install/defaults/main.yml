@@ -1,3 +1,7 @@
 ---
 # can bb "stable", "latest", "testing"
 k3s_channal: stable
+k3s_install_with_pull_secret: false
+k3s_install_download_kubeconfig: "yes"
+k3s_install_k3s_url: "https://mastodon.the-independent-friend.de:6443"
+k3s_install_k3s_token: "ddtseeaszqtj"
