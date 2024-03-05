@@ -20,7 +20,7 @@ jobs:
           echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
           echo "Tag name from github.ref_name: ${{  github.ref_name }}"
       - name: Run playbook
-        uses: dawidd6/action-ansible-playbook@v2
+        uses: dawidd6/action-ansible-playbook@v4
         with:
           playbook: install_and_update.yaml
           directory: ./ansible
@@ -37,16 +37,12 @@ jobs:
       - dryRun
     runs-on: ubuntu-latest
     steps:
-      # - name: Checkout
-      #   uses: actions/checkout@v3
-      #   with:
-      #     fetch-depth: 2
-      # - name: Get GitHub Tag Name
-      #   run: |
-      #     echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
-      #     echo "Tag name from github.ref_name: ${{  github.ref_name }}"
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
       - name: Run playbook
-        uses: dawidd6/action-ansible-playbook@v2
+        uses: dawidd6/action-ansible-playbook@v4
         with:
           # Required, playbook filepath
           playbook: install_and_update.yaml
