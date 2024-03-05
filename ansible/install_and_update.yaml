@@ -1,7 +1,7 @@
 ---
 
-- name: Run baltic-sea
-  hosts: baltic-sea
+- name: Run hetzner
+  hosts: hetzner
   roles:
     - ping
     # - os_configs

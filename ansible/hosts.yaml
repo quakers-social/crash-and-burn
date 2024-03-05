@@ -5,3 +5,6 @@ all:
   hosts:
     localhost:
     ubuntu-4gb-hel1-3:
+hetzner:
+  hosts:
+    ubuntu-4gb-hel1-3:

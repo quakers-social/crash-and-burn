@@ -1,4 +1,5 @@
 DOCUMENTATION
 =============
 
-- [VIRTUAL MACHINE](doc/vm.md)
+- [Virtual machines](doc/vm.md)
+- [Ansible Playbook]()
