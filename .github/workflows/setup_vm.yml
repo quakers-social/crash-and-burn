@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 1
       - name: ssh test
-        run:  ssh root@2a01:4f9:c010:8e06::1 date
+        run:  ssh -p 8022 root@2a01:4f9:c010:8e06::1 date
       - name: Get GitHub Tag Name
         run: |
           echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
