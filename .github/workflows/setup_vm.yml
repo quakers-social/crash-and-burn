@@ -32,7 +32,7 @@ jobs:
             --verbose
             --check
   setupRemote:
-    if: startsWith(github.ref, 'refs/tags/*')
+    if: github.ref_type == 'tag'
     needs:
       - dryRun
     runs-on: ubuntu-latest
