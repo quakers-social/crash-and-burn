@@ -15,8 +15,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - name: ssh test
-        run:  ssh -p 8022 root@2a01:4f9:c010:8e06::1 date
       - name: Get GitHub Tag Name
         run: |
           echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
@@ -50,22 +48,7 @@ jobs:
           playbook: install_and_update.yaml
           # Optional, directory where playbooks live
           directory: ./ansible
-          # Optional, ansible configuration file content (ansible.cfg)
-          # configuration: |
-          #   [defaults]
-          #   callbacks_enabled = ansible.posix.profile_tasks, ansible.posix.timer
-          #   stdout_callback = yaml
-          #   nocows = false
-          # Optional, SSH private key
           key: ${{secrets.SSH_PRIVATE_KEY}}
-          # Optional, literal inventory file contents
-          # inventory: |
-          #   [all]
-          #   example.com
-
-          #   [group1]
-          #   example.com
-          # Optional, SSH known hosts file content
           known_hosts: |
             mastodon.the-independent-friend.de ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJAcpDId6LxMxyI8RnRq7GZctKMS5eOZa+hX/1G5fYGf
           # Optional, encrypted vault password
@@ -75,5 +58,4 @@ jobs:
           # Optional, additional flags to pass to ansible-playbook
           options: |
             --inventory ./hosts.yaml
-            --extra-vars hello=there
             --diff

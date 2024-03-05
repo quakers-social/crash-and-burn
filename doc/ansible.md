@@ -34,3 +34,13 @@ ansible-playbook \
   -i ./ansible/hosts.yaml \
   ./ansible/install_and_update.yaml
 ```
+
+KNOWN ISSUE
+-----------
+
+The default runners of github action run in the azure cloud and have a firewall
+rule that prohibits opening outgoing ssh connections (regardless of which port).
+
+### Solution:
+
+Using your own runner: [About self-hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners)
