@@ -1,6 +1,24 @@
 ANSIBLE
 =======
 
+- [ANSIBLE](#ansible)
+  - [MISSION](#mission)
+  - [GITLAB ACTION](#gitlab-action)
+  - [TROUBLESHOOTING](#troubleshooting)
+  - [KNOWN ISSUE](#known-issue)
+    - [Solution:](#solution)
+
+
+
+MISSION
+-------
+
+Infrastructor as code for virtual machine(s).
+
+
+GITLAB ACTION
+-------------
+
 The Ansible Playbook is primarily initiated by the *Github Action*.
 See: [.github/workflows](.github/workflows)
 
