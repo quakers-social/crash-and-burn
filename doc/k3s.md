@@ -1,7 +1,7 @@
 K3S
 ===
 
-
+See also: [https://docs.k3s.io/](https://docs.k3s.io/)
 
 
 KNOWN ISSUE
