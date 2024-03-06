@@ -4,7 +4,7 @@ name: Pulumi dry run
 on:
   push:
     tags-ignore:
-      - '**'
+      - '*'
 jobs:
   pulumiDryRun:
     name: Pulimi dry run
