@@ -8,6 +8,7 @@ PULUMI
 	- [INIT PULUMI PROJEKT](#init-pulumi-projekt)
 	- [RUN PULUMI](#run-pulumi)
 	- [GITHUB ACTION](#github-action)
+	- [RUN PULUMI LOCAL BY HAND](#run-pulumi-local-by-hand)
 	- [TODOs](#todos)
 
 
@@ -51,11 +52,27 @@ scripts/run_pulumi.sh
 GITHUB ACTION
 -------------
 
-Next...
+Pulumi is integrated in the Github Action pipeline. All pushes check
+whether the Pulumi configuration is error-free.
 
-https://github.com/pulumi/actions
+If a commit is ***tagged*** and this tag is pushed, then the
+configuration is tested and if the test was successful, the changes
+are executed by Pulumi on Kubernetes.
 
-https://www.pulumi.com/docs/using-pulumi/continuous-delivery/github-actions/
+RUN PULUMI LOCAL BY HAND
+------------------------
+
+Set the Environment variables `PULUMI_CONFIG_PASSPHRASE` and
+enter the halber script:
+
+```bash
+$ PULUMI_CONFIG_PASSPHRASE='XXXXXXXXXXX'
+$ scripts/run_pulumi.sh
+```
+
+you will find the password you need under
+
+`repo > settings > secrets > actions > Repository secrets`
 
 TODOs
 -----
