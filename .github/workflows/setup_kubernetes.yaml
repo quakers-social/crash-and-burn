@@ -1,13 +1,31 @@
 ---
 
-name: Pulumi up
-on:
-  push:
-    tags:
-      - '*'
+name: Pulumi
+on: push
+  # push:
+  #   tags:
+  #     - '*'
 jobs:
+  pulumiDryRun:
+    name: Pulumi dry run
+    if: github.ref_type != 'tag'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pulumi/actions@v5
+        with:
+          command: preview
+          stack-name: dev
+          work-dir: ./pulumi
+          cloud-url: file://./
+          secrets-provider: passphrase
+        env:
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
   pulumiUp:
-    name: Pulimi up
+    name: Pulumi up
+    if: github.ref_type == 'tag'
+    needs:
+      - pulumiDryRun
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
