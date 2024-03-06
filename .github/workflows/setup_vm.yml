@@ -33,8 +33,8 @@ jobs:
   #           --check
   setupRemote:
     if: github.ref_type == 'tag'
-    needs:
-      - dryRun
+    # needs:
+    #   - dryRun
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
