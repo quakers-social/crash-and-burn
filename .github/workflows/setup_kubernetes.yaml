@@ -8,7 +8,6 @@ on: push
 jobs:
   pulumiDryRun:
     name: Pulumi dry run
-    if: github.ref_type != 'tag'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
