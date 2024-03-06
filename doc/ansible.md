@@ -66,3 +66,5 @@ rule that prohibits opening outgoing ssh connections (regardless of which port).
 ### Solution:
 
 Using your own runner: [About self-hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners)
+
+See issue: [[CI/CD] We use our own Github Action Runners #20](https://github.com/quakers-social/production-tracker/issues/20)
