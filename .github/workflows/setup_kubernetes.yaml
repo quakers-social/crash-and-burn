@@ -1,0 +1,20 @@
+---
+
+name: Pulumi
+on:
+  push:
+jobs:
+  pulumiUp:
+    name: Pulimi up
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pulumi/actions@v5
+        with:
+          command: preview
+          stack-name: dev
+          work-dir: ./pulumi
+          cloud-url: file://./
+          secrets-provider: passphrase
+        env:
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
