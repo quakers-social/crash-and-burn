@@ -7,7 +7,7 @@ on:
       - '*'
 jobs:
   pulumiDryRun:
-    name: Pulimi dry run
+    name: Pulumi dry run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
