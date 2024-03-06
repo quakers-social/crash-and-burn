@@ -1,13 +1,13 @@
 ---
 
-name: Pulumi up
+name: Pulumi dry run
 on:
   push:
-    tags:
-      - '*'
+    tags-ignore:
+      - '**'
 jobs:
-  pulumiUp:
-    name: Pulimi up
+  pulumiDryRun:
+    name: Pulimi dry run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
