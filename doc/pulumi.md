@@ -1,7 +1,6 @@
 PULUMI
 ======
 
-
 - [PULUMI](#pulumi)
 	- [MISSION](#mission)
 	- [STATE](#state)
@@ -59,6 +58,14 @@ whether the Pulumi configuration is error-free.
 If a commit is ***tagged*** and this tag is pushed, then the
 configuration is tested and if the test was successful, the changes
 are executed by Pulumi on Kubernetes.
+
+*Tipp:*
+to find the last used tag enter this
+
+````bash
+$ git tag | sort -n | tail -n 1
+````
+
 
 RUN PULUMI LOCAL BY HAND
 ------------------------
