@@ -30,7 +30,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: pulumi/actions@v5
         with:
-          command: preview
+          command: up
           stack-name: dev
           work-dir: ./pulumi
           cloud-url: file://./
