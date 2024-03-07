@@ -4,7 +4,7 @@ set -x
 set -e
 set -u
 
-# export PULUMI_CONFIG_PASSPHRASE_FILE=${HOME}/.ssh/pulumi-passwd
+export PULUMI_CONFIG_PASSPHRASE_FILE=${HOME}/.ssh/quakers-social/pulumi
 export START_PWD=$(pwd)
 export WORK_DIR="pulumi"
 export K_KLUSTER="mastodon.the-independent-friend.de"

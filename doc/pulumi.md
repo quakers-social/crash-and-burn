@@ -9,6 +9,7 @@ PULUMI
 	- [RUN PULUMI](#run-pulumi)
 	- [GITHUB ACTION](#github-action)
 	- [RUN PULUMI LOCAL BY HAND](#run-pulumi-local-by-hand)
+	- [TROUBLESHOOTING](#troubleshooting)
 	- [TODOs](#todos)
 
 
@@ -62,7 +63,8 @@ are executed by Pulumi on Kubernetes.
 RUN PULUMI LOCAL BY HAND
 ------------------------
 
-Set the Environment variables `PULUMI_CONFIG_PASSPHRASE` and
+Set the Environment variables `PULUMI_CONFIG_PASSPHRASE` or create
+an passwordfile under and `${HOME}/.ssh/quakers-social/pulumi` and
 enter the halber script:
 
 ```bash
@@ -73,6 +75,19 @@ $ scripts/run_pulumi.sh
 you will find the password you need under
 
 `repo > settings > secrets > actions > Repository secrets`
+
+
+TROUBLESHOOTING
+---------------
+
+If you run the pulumi first time lokal than you have to set
+```bash
+$ INSTALL_AND_UPDATE_GO_MODS="true"
+$ scripts/run_pulumi.sh
+```
+
+This will be downlod the needed go modules.
+
 
 TODOs
 -----
