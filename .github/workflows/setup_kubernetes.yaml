@@ -33,12 +33,14 @@ jobs:
     steps:
       - name: git clone
         uses: actions/checkout@v4
+      - name: cd pulumi
+        run: cd ./pulumi
       - name: install go lib of kubernetes
         run: go install github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes@latest
       - name: downloading kubectl
         run: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
       - name: downloading go mod dependencies
-        run: cd ./pulumi && go mod download
+        run: go mod download
       - name: create kube dir
         run: mkdir ~/.kube
       - name: create kubeconfig
