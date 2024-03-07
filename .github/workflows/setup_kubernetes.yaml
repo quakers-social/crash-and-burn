@@ -36,7 +36,7 @@ jobs:
       - name: install kubernetes dependencis
         run: ./scripts/install_k8s_dependencies.sh
       - name: install kubernetes dependencis
-        run: echo "${KUBE_CONFIG}" >  ${KUBECONFIG}
+        run: echo "${KUBE_CONFIG}" >  ${KUBECONFIG} && wc $(pwd)/${KUBECONFIG}
         env:
           KUBECONFIG: "./kubeconfig"
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
