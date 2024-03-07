@@ -40,7 +40,7 @@ jobs:
       - name: downloading kubectl
         run: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
       - name: downloading go mod dependencies
-        run: go mod download
+        run: go mod tidy
       - name: create kube dir
         run: mkdir ~/.kube
       - name: create kubeconfig
