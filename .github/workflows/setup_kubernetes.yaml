@@ -51,5 +51,5 @@ jobs:
           cloud-url: file://./
           secrets-provider: passphrase
         env:
-          KUBECONFIG: ".kube/config"
+          KUBECONFIG: "../.kube/config"
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
