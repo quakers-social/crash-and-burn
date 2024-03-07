@@ -36,12 +36,12 @@ jobs:
       - name: downloading go mod dependencies
         run: cd ./pulumi && go mod download
       - name: create kube dir
-        run: mkdir ./kube
+        run: mkdir ./.kube
       - name: create kubeconfig
         uses: mobiledevops/secret-to-file-action@v1
         with:
           base64-encoded-secret: ${{ secrets.KUBE_CONFIG }}
-          filename: ".kube/config"
+          filename: "./.kube/config"
       - name: Pulumi up
         uses: pulumi/actions@v5
         with:
