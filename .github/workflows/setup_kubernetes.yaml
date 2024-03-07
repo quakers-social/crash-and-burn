@@ -34,7 +34,7 @@ jobs:
       - name: git clone
         uses: actions/checkout@v4
       - name: cd pulumi
-        run: cd ./pulumi
+        run: cd ./pulumi && ls -lah
       - name: install go lib of kubernetes
         run: go get github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes@latest || true
       - name: downloading kubectl
