@@ -35,6 +35,12 @@ jobs:
         uses: actions/checkout@v4
       - name: downloading go mod dependencies
         run: cd ./pulumi && go mod download
+      - name: set kubernetes context
+        uses: azure/k8s-set-context@v3
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+          context: <context name>
       - name: Pulumi up
         uses: pulumi/actions@v5
         with:
