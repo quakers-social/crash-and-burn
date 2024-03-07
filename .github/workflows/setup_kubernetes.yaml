@@ -35,6 +35,11 @@ jobs:
         uses: actions/checkout@v4
       - name: install kubernetes dependencis
         run: ./scripts/install_k8s_dependencies.sh
+      - name: install kubernetes dependencis
+        run: echo "${KUBE_CONFIG}" >  ${KUBECONFIG}
+        env:
+          KUBECONFIG: "./kubeconfig"
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
       - name: create kubeconfig
         uses: mobiledevops/secret-to-file-action@v1
         with:
