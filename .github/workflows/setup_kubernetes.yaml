@@ -35,16 +35,16 @@ jobs:
         uses: actions/checkout@v4
       - name: install kubernetes dependencis
         run: ./scripts/install_k8s_dependencies.sh
-      - name: install kubernetes dependencis
+      - name: create kubeconfig
         run: echo "${KUBE_CONFIG}" >  ${KUBECONFIG} && wc $(pwd)/${KUBECONFIG}
         env:
-          KUBECONFIG: "./kubeconfig"
+          KUBECONFIG: "/home/runner/work/crash-and-burn/crash-and-burn/kubeconfig"
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-      - name: create kubeconfig
-        uses: mobiledevops/secret-to-file-action@v1
-        with:
-          base64-encoded-secret: ${{ secrets.KUBE_CONFIG }}
-          filename: "~/.kube/config"
+      # - name: create kubeconfig
+      #   uses: mobiledevops/secret-to-file-action@v1
+      #   with:
+      #     base64-encoded-secret: ${{ secrets.KUBE_CONFIG }}
+      #     filename: "~/.kube/config"
       - name: Pulumi up
         uses: pulumi/actions@v5
         with:
@@ -54,5 +54,5 @@ jobs:
           cloud-url: file://./
           secrets-provider: passphrase
         env:
-          KUBECONFIG: "/tmp/kube/config"
+          KUBECONFIG: "/home/runner/work/crash-and-burn/crash-and-burn/kubeconfig"
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
