@@ -32,7 +32,7 @@ else
 	echo "don't update go modules."
 fi
 
-pulumi login file://$(pwd)
+pulumi login 's3://pulumi?region=us-west-1&endpoint=us-west-1.storage.impossibleapi.net'
 # pulumi up --yes
 pulumi up --debug --stack ${P_STACK}
 
