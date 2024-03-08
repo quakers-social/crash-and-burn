@@ -1,0 +1,84 @@
+S3 STORAGE
+==========
+
+
+- [S3 STORAGE](#s3-storage)
+  - [MISSION](#mission)
+  - [PROVIDER](#provider)
+  - [EXTERNAL DOKUMENTATION](#external-dokumentation)
+  - [PRICING](#pricing)
+    - [Minimum charge](#minimum-charge)
+  - [TOOLING](#tooling)
+  - [EXAMPLES](#examples)
+    - [Pulumi backend](#pulumi-backend)
+    - [s3cmd](#s3cmd)
+
+
+MISSION
+-------
+
+S3 storage is use for the state of Pulumi
+
+
+PROVIDER
+--------
+
+The provider / hoster of S3 is impossiblecloud.com.
+
+
+EXTERNAL DOKUMENTATION
+----------------------
+
+- [impossible cloud help](https://docs.impossiblecloud.com/impossible-cloud-help/)
+
+
+PRICING
+-------
+
+Quota impossible cloud:
+
+    At Impossible Cloud Storage, we follow a decimal storage calculation where 1 terabyte (TB) is considered 1,000 gigabytes (GB), and 1 gigabyte is considered 1,000 megabytes (MB). This means that when you see our storage pricing of €7.99 per terabyte for the 'Pay-per-use' plan, it is equivalent to €0.00799 per gigabyte.
+    We adopt this calculation method to provide a consistent and transparent pricing structure for our users. Using a base of 1,000 rather than 1,024 simplifies the storage calculation process and allows for easier budgeting and cost management.
+    When estimating your storage requirements and understanding the associated costs, keep in mind that each gigabyte is comprised of 1,000 megabytes and each terabyte is comprised of 1,000 gigabytes. This ensures clarity and accuracy when calculating your storage expenses with Impossible Cloud Storage.
+
+
+### Minimum charge
+
+Quota impossible cloud:
+
+    For ease of processing, Impossible Cloud charges a minimum consumption fee of €7.99 for the EU region or $7.99 for the US region - this is only valid for the 'Pay-per-Use'-plans.
+    Additional consumption is charged on a price of €0.00799 or $0.00799 per GB and month.
+
+
+TOOLING
+-------
+
+- The web console of [console.impossiblecloud.com/](https://console.impossiblecloud.com/)
+  - Attanchon! All regions has his own web console: [us-west-1](https://console.impossiblecloud.com/), [eu-central-1](https://console.eu.impossiblecloud.com/), [eu-central-2](https://console.eu-2.impossiblecloud.com/)
+- [S3Drive](https://s3drive.app/) is an easy to use client for S3.
+
+
+EXAMPLES
+--------
+
+### Pulumi backend
+
+```bash
+pulumi login 's3://pulumi?region=us-west-1&endpoint=us-west-1.storage.impossibleapi.net'
+```
+
+### s3cmd
+
+Pre step:
+
+```bash
+s3cmd --configure
+```
+
+...and answer the question. After here enter:
+
+```bash
+s3cmd la s3://pulumi
+```
+
+.
