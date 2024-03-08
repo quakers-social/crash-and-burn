@@ -15,7 +15,7 @@ jobs:
       - name: downloading go mod dependencies
         run: cd ./pulumi && go mod download
       - name: test env
-        run: echo "${AWS_ACCESS_KEY_ID" | wc
+        run: echo "${AWS_ACCESS_KEY_ID}" | wc
         env:
           KUBECONFIG: "/home/runner/work/crash-and-burn/crash-and-burn/kubeconfig"
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
