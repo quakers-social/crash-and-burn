@@ -37,7 +37,9 @@ pulumi new kubernetes-go \
 
 ```bash
 $ PULUMI_CONFIG_PASSPHRASE='XXXXXXXXXXX'
-$ pulumi login file://$(pwd)
+$ AWS_ACCESS_KEY_ID=XXXXXXXXX
+$ AWS_SECRET_ACCESS_KEY=XXXXXXXXX
+$ pulumi login 's3://pulumi?region=us-west-1&endpoint=us-west-1.storage.impossibleapi.net'
 ```
 
 RUN PULUMI
@@ -72,10 +74,13 @@ RUN PULUMI LOCAL BY HAND
 
 Set the Environment variables `PULUMI_CONFIG_PASSPHRASE` or create
 an passwordfile under and `${HOME}/.ssh/quakers-social/pulumi` and
-enter the halber script:
+set `PULUMI_CONFIG_PASSPHRASE_FILE=${HOME}/.ssh/quakers-social/pulumi`
+and than enter the script:
 
 ```bash
 $ PULUMI_CONFIG_PASSPHRASE='XXXXXXXXXXX'
+$ AWS_ACCESS_KEY_ID=XXXXXXXXX
+$ AWS_SECRET_ACCESS_KEY=XXXXXXXXX
 $ scripts/run_pulumi.sh
 ```
 

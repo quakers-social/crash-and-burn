@@ -4,10 +4,7 @@ go 1.21
 
 toolchain go1.21.7
 
-require (
-	github.com/pulumi/pulumi-kubernetes/sdk/v3 v3.30.2
-	github.com/pulumi/pulumi/sdk/v3 v3.108.1
-)
+require github.com/pulumi/pulumi/sdk/v3 v3.108.1
 
 require (
 	dario.cat/mergo v1.0.0 // indirect
