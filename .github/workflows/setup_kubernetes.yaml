@@ -19,7 +19,7 @@ jobs:
         env:
           KUBECONFIG: "/home/runner/work/crash-and-burn/crash-and-burn/kubeconfig"
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
       - name: test env 2
         run:  echo "${AWS_SECRET_ACCESS_KEY}" | wc
