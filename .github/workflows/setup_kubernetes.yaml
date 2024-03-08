@@ -15,24 +15,26 @@ jobs:
       - name: downloading go mod dependencies
         run: cd ./pulumi && go mod download
       - name: test env
-        run: echo "${AWS_ACCESS_KEY_ID}" | wc
+        run: echo "${AWS_ACCESS_KEY_ID}" | wc %% echo "${AWS_SECRET_ACCESS_KEY}" | wc
         env:
           KUBECONFIG: "/home/runner/work/crash-and-burn/crash-and-burn/kubeconfig"
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
           AWS_ACCESS_KEY_ID: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
       - name: Pulumi up
         uses: pulumi/actions@v5
         with:
           command: preview
           stack-name: dev
           work-dir: ./pulumi-02
-          cloud-url: 's3://pulumi?region=us-west-1&endpoint=us-west-1.storage.impossibleapi.net'
+          cloud-url: s3://pulumi?region=us-west-1&endpoint=us-west-1.storage.impossibleapi.net
           secrets-provider: passphrase
         env:
           KUBECONFIG: "/home/runner/work/crash-and-burn/crash-and-burn/kubeconfig"
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
           AWS_ACCESS_KEY_ID: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+          AWS_REGION: 'us-west-1'
   pulumiUp:
     name: Pulumi run
     if: github.ref_type == 'tag'
@@ -67,3 +69,4 @@ jobs:
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
           AWS_ACCESS_KEY_ID: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+          AWS_REGION: 'us-west-1'
