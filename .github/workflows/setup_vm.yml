@@ -1,3 +1,16 @@
+---
+
+name: Run Ansible
+run-name: ${{ github.actor }} run setuo VM.
+on: push
+jobs:
+  dryRun:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pass pipeline
+        run: |
+          echo "This pipeline waiting of his own external runner...."
+
 # ---
 
 # name: Run Ansible
