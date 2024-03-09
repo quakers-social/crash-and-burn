@@ -16,10 +16,10 @@ var CrashAndBurn = func(ctx *pulumi.Context) error {
 		return err
 	}
 
-	// err = gocode.LocalStorage(ctx, nameSpaceName)
-	// if err != nil {
-	// 	return err
-	// }
+	err = gocode.LocalStorage(ctx, nameSpaceName)
+	if err != nil {
+		return err
+	}
 
 	// err = gocode.DebugContainer(ctx, nameSpaceName)
 	// if err != nil {
