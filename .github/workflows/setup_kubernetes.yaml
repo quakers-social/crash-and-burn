@@ -44,6 +44,8 @@ jobs:
         env:
           KUBECONFIG: "/home/runner/work/crash-and-burn/crash-and-burn/kubeconfig"
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+      - name: download chart
+        run: ./scripts/download_chart.sh
       # - name: create kubeconfig
       #   uses: mobiledevops/secret-to-file-action@v1
       #   with:

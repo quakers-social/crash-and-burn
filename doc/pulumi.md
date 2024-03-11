@@ -8,6 +8,10 @@ PULUMI
 	- [RUN PULUMI](#run-pulumi)
 	- [GITHUB ACTION](#github-action)
 	- [RUN PULUMI LOCAL BY HAND](#run-pulumi-local-by-hand)
+	- [WORKING WITH SECRETS](#working-with-secrets)
+		- [ADD](#add)
+		- [SHOW CONFIG](#show-config)
+		- [GET SECRETS](#get-secrets)
 	- [TROUBLESHOOTING](#troubleshooting)
 	- [TODOs](#todos)
 
@@ -87,6 +91,30 @@ $ scripts/run_pulumi.sh
 you will find the password you need under
 
 `repo > settings > secrets > actions > Repository secrets`
+
+WORKING WITH SECRETS
+--------------------
+
+### ADD
+
+Example:
+
+```bash
+pulumi config set mongoUsername admin
+pulumi config set --secret mongoPassword XXXXX
+```
+
+### SHOW CONFIG
+
+```bash
+pulumi config
+```
+
+### GET SECRETS
+
+```bash
+pulumi config --show-secrets
+```
 
 
 TROUBLESHOOTING

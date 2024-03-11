@@ -26,6 +26,11 @@ var CrashAndBurn = func(ctx *pulumi.Context) error {
 		return err
 	}
 
+	err = gocode.Mastodon(ctx, nameSpaceName)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 

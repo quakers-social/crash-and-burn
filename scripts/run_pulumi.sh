@@ -6,9 +6,13 @@ set -u
 
 export PULUMI_CONFIG_PASSPHRASE_FILE=${HOME}/.ssh/quakers-social/pulumi
 export START_PWD=$(pwd)
-export WORK_DIR="pulumi"
+export WORK_DIR="$(pwd)/pulumi"
 export K_KLUSTER="mastodon.the-independent-friend.de"
 export P_STACK="dev"
+
+# Don't forgot to set:
+# AWS_ACCESS_KEY_ID=XXXXXXXXX
+# AWS_SECRET_ACCESS_KEY=XXXXXXXXX
 
 if [ -z ${INSTALL_AND_UPDATE_GO_MODS+x} ]
 then
@@ -19,6 +23,14 @@ else
 	# INSTALL_AND_UPDATE_GO_MODS="TRUE"
 fi
 
+cd ${WORK_DIR}
+mkdir -p ./charts
+
+curl -L https://github.com/mastodon/chart/archive/refs/heads/main.zip -o ./charts/chart-main.zip
+unzip -u -d ./charts ./charts/chart-main.zip
+
+cd ./charts/chart-main
+helm dep update
 cd ${WORK_DIR}
 
 kubectx ${K_KLUSTER}

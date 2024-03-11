@@ -52,6 +52,17 @@ func main() {
 }
 ```
 
+CREATE VAPID KEYs
+-----------------
+
+```bash
+openssl ecparam -name prime256v1 -genkey -noout -out vapid_private_key.pem
+openssl ec -in vapid_private_key.pem -pubout -out vapid_public_key.pem
+echo -n VAPID_PRIVATE_KEY=;cat vapid_private_key.pem | sed -e "1 d" -e "$ d" | tr -d "\n"; echo
+echo -n VAPID_PUBLIC_KEY=;cat vapid_public_key.pem | sed -e "1 d" -e "$ d" | tr -d "\n"; echo
+
+```
+
 
 EXTERNAL LINKS
 --------------
