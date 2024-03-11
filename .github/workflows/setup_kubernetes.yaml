@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: git clone
         uses: actions/checkout@v4
+      - name: download chart
+        run: ./scripts/download_chart.sh
       - name: downloading go mod dependencies
         run: cd ./pulumi && go mod download
       - name: Pulumi up
