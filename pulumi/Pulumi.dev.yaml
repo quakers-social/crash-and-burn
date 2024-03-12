@@ -1,5 +1,7 @@
 encryptionsalt: v1:yGSrCHJpgkI=:v1:94AuVH1KtZ+aXUOX:bkhAorubuQUXcJ9QWKuzcXhQNMd/Yg==
 config:
+  quakers-social:mastodon_admin_password:
+    secure: v1:SX8ZLGujq8myoiLP:CJe79c+w1NIufbcWU+/Va7tEUGfFqKBB5gIY66DA3Qh/g5HvaOyxB+ke05xFxY+kf7CkdNtu
   quakers-social:mastodon_otp_secret:
     secure: v1:Nnw/ibL1BqoF35r7:vka/N0YvZMxRcQn5BkZ+kvViqVk6VsauzUB1CvKFI8Trhs3aWaAvouRUoFDff1N44mretunPNIc=
   quakers-social:mastodon_postgres_password:

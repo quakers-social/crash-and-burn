@@ -26,7 +26,17 @@ var CrashAndBurn = func(ctx *pulumi.Context) error {
 		return err
 	}
 
-	err = gocode.Mastodon(ctx, nameSpaceName)
+	// err = gocode.Mastodon(ctx, nameSpaceName)
+	// if err != nil {
+	// 	return err
+	// }
+
+	// err = gocode.BitnamiMastodon(ctx, nameSpaceName)
+	// if err != nil {
+	// 	return err
+	// }
+
+	err = gocode.PostgresOperator(ctx, nameSpaceName)
 	if err != nil {
 		return err
 	}

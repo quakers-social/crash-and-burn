@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
-func Mastodon(ctx *pulumi.Context, nameSpaceName string) error {
+func BitnamiMastodon(ctx *pulumi.Context, nameSpaceName string) error {
 
 	cfg := config.New(ctx, "")
 	s3AccessSecret := cfg.RequireSecret("s3_access_secret")
@@ -16,32 +16,27 @@ func Mastodon(ctx *pulumi.Context, nameSpaceName string) error {
 	mastodonPostgresPassword := cfg.RequireSecret("mastodon_postgres_password")
 	mastodonVapidPrivateKey := cfg.RequireSecret("mastodon_vapid_private_key")
 	mastodonVapidPublicKey := cfg.Require("mastodon_vapid_public_key")
+	mastodonAdminPassword := cfg.RequireSecret("mastodon_admin_password")
 
 	chartValuse := pulumi.Map{
-		"mastodon": pulumi.Map{
-			"local_domain": pulumi.String("mastodon.the-independent-friend.de"),
-			"s3": pulumi.Map{
-				"enabled":       pulumi.Bool(true),
-				"access_key":    pulumi.String("21D554754B5AB6CF0F635"),
-				"access_secret": s3AccessSecret,
-				"bucket":        pulumi.String("mastodon001"),
-				"endpoint":      pulumi.String("us-west-1.storage.impossibleapi.net"),
-				"region":        pulumi.String("us-west-1"),
-			},
-			"secrets": pulumi.Map{
-				"secret_key_base": mastodonSecretKeyBase,
-				"otp_secret":      otpSecret,
-				"vapid": pulumi.Map{
-					"private_key": mastodonVapidPrivateKey,
-					"public_key":  pulumi.String(mastodonVapidPublicKey),
-				},
-			},
-		},
-		"ingress": pulumi.Map{
-			"enabled": pulumi.Bool(false),
+		"adminUser":       pulumi.String("olaf"),
+		"adminEmail":      pulumi.String("briefkasten@olaf-radicke.de"),
+		"adminPassword":   mastodonAdminPassword,
+		"localDomain":     pulumi.String("mastodon.the-independent-friend.de"),
+		"webDomain":       pulumi.String("mastodon.the-independent-friend.de"),
+		"secretKeyBase":   mastodonSecretKeyBase,
+		"otpSecret":       otpSecret,
+		"vapidPrivateKey": mastodonVapidPrivateKey,
+		"vapidPublicKey":  pulumi.String(mastodonVapidPublicKey),
+		"externalS3": pulumi.Map{
+			"existingSecretAccessKeyIDKey": pulumi.String("21D554754B5AB6CF0F635"),
+			"existingSecretKeySecretKey":   s3AccessSecret,
+			"bucket":                       pulumi.String("mastodon001"),
+			"host":                         pulumi.String("us-west-1.storage.impossibleapi.net"),
+			"region":                       pulumi.String("us-west-1"),
 		},
 		"postgresql": pulumi.Map{
-			"enabled": pulumi.Bool(true),
+			"enabled": pulumi.Bool(false),
 			"auth": pulumi.Map{
 				"password": mastodonPostgresPassword,
 			},
@@ -50,7 +45,7 @@ func Mastodon(ctx *pulumi.Context, nameSpaceName string) error {
 
 	// Deploy Mastodon Helm chart
 	_, err := helm.NewChart(ctx, "mastodon", helm.ChartArgs{
-		Path:      pulumi.String("./charts/chart-main/"),
+		Path:      pulumi.String("./charts/charts-main/bitnami/mastodon"),
 		Namespace: pulumi.String(nameSpaceName),
 		Values:    chartValuse,
 	})

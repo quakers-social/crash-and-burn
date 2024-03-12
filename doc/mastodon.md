@@ -71,3 +71,4 @@ EXTERNAL LINKS
 - [Bitnami package for Mastodon](https://github.com/bitnami/charts/tree/main/bitnami/mastodon/)
 - [Mastodon on DigitalOcean Kubernetes](https://docs.digitalocean.com/developer-center/mastodon-on-digitalocean-kubernetes/)
 - [Running Mastodon server on Kubernetes](https://softwaremill.com/running-mastodon-server-on-kubernetes/)
+-

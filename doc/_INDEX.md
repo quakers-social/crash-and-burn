@@ -7,3 +7,4 @@ DOCUMENTATION
 - [S3 strorage](s3.md)
 - [Pulumi](pulumi.md)
 - [Mastodon](mastodon.md)
+- [PostgreSQL](postgresql.md)
