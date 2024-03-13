@@ -12,10 +12,11 @@ jobs:
     steps:
       - name: git clone
         uses: actions/checkout@v4
-      - name: download chart
-        run: ./scripts/download_chart.sh
-      - name: downloading go mod dependencies
-        run: cd ./pulumi && go mod download
+      - name: download charts
+        run: |
+          ./scripts/install_k8s_dependencies.sh
+          ./scripts/download_bitnami_mastodon_chart.sh
+          ./scripts/download_pg_operator_chart.sh
       - name: Pulumi up
         uses: pulumi/actions@v5
         with:
@@ -39,20 +40,18 @@ jobs:
     steps:
       - name: git clone
         uses: actions/checkout@v4
-      - name: install kubernetes dependencis
-        run: ./scripts/install_k8s_dependencies.sh
+      - name: download K8s-tool,go libs and charts
+        run: |
+          ./scripts/install_k8s_dependencies.sh
+          ./scripts/download_bitnami_mastodon_chart.sh
+          ./scripts/download_pg_operator_chart.sh
       - name: create kubeconfig
         run: echo "${KUBE_CONFIG}" > ${KUBECONFIG} && wc ${KUBECONFIG}
         env:
           KUBECONFIG: "/home/runner/work/crash-and-burn/crash-and-burn/kubeconfig"
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-      - name: download chart
-        run: ./scripts/download_chart.sh
-      # - name: create kubeconfig
-      #   uses: mobiledevops/secret-to-file-action@v1
-      #   with:
-      #     base64-encoded-secret: ${{ secrets.KUBE_CONFIG }}
-      #     filename: "~/.kube/config"
+      - name: downloading go mod dependencies
+        run: cd ./pulumi && go mod download
       - name: Pulumi up
         uses: pulumi/actions@v5
         with:

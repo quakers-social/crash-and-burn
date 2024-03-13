@@ -27,9 +27,9 @@ func PostgresOperator(ctx *pulumi.Context, nameSpaceName string) error {
 
 	// Deploy Mastodon Helm chart
 	_, err := helm.NewChart(ctx, "mastodon", helm.ChartArgs{
-		Path: pulumi.String("./charts/postgres-operator-examples-main/helm/install"),
-		// Namespace: pulumi.String(nameSpaceName),
-		Values: chartValuse,
+		Path:      pulumi.String("./charts/postgres-operator-examples-main/helm/install"),
+		Namespace: pulumi.String(nameSpaceName),
+		Values:    chartValuse,
 	})
 	// _, err := helm.NewChart(ctx, "mastodon", helm.ChartArgs{
 	// 	Chart:     pulumi.String("mastodon"),
