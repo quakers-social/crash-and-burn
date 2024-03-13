@@ -41,6 +41,11 @@ var CrashAndBurn = func(ctx *pulumi.Context) error {
 		return err
 	}
 
+	err = gocode.PGCluster(ctx, nameSpaceName)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 

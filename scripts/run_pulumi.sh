@@ -23,14 +23,7 @@ else
 	# INSTALL_AND_UPDATE_GO_MODS="TRUE"
 fi
 
-# cd ${WORK_DIR}
-# mkdir -p ./charts
 
-# curl -L https://github.com/mastodon/chart/archive/refs/heads/main.zip -o ./charts/chart-main.zip
-# unzip -u -d ./charts ./charts/chart-main.zip
-
-# cd ./charts/chart-main
-# helm dep update
 cd ${WORK_DIR}
 
 kubectx ${K_KLUSTER}

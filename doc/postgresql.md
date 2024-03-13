@@ -16,11 +16,24 @@ See:
  - [git repo with Install example for Helm](https://github.com/CrunchyData/postgres-operator-examples/tree/main/helm/install)
 
 
-BOOTSTRAP OF POSTGRESQL INSTANCE
---------------------------------
+BOOTSTRAP OF POSTGRESQL INSTANCE / CLUSTER
+------------------------------------------
+
+See: [Create a Postgres Cluster](https://access.crunchydata.com/documentation/postgres-operator/latest/tutorials/basic-setup/create-cluster)
+
+
+POSTGRESQL CONNECTION
+---------------------
+
+See: [Connect to a Postgres Cluster](https://access.crunchydata.com/documentation/postgres-operator/latest/tutorials/basic-setup/connect-cluster)
+
 
 BACKUP & RESTORE
 ----------------
+
+See:
+- [Backup Configuration](https://access.crunchydata.com/documentation/postgres-operator/latest/tutorials/backups-disaster-recovery/backups)
+- [Using S3 Credentials](https://access.crunchydata.com/documentation/postgres-operator/latest/tutorials/backups-disaster-recovery/backups#using-s3-credentials)
 
 
 COMPARING SOLUTIONS AND ALTERNATIVES
