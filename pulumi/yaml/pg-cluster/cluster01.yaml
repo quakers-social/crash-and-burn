@@ -19,12 +19,12 @@ spec:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.49-0
       configuration:
       - secret:
-          name: pgo-s3-creds
+          name: pg-cluster-s3-secret
       global:
-        repo1-path: /pgbackrest/postgres-operator/hippo-s3/repo1
+        repo1-s3-uri-style: path
       repos:
       - name: repo1
         s3:
-          bucket: "<YOUR_AWS_S3_BUCKET_NAME>"
-          endpoint: "<YOUR_AWS_S3_ENDPOINT>"
-          region: "<YOUR_AWS_S3_REGION>"
+          bucket: "pg-backup"
+          endpoint: "us-west-1.storage.impossibleapi.net.storage.impossibleapi.net"
+          region: "us-west-1"
