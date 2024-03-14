@@ -19,7 +19,7 @@ spec:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.49-0
       configuration:
       - secret:
-          name: pg-cluster-s3-secret
+          name: postgres-s3-backup-secret
       global:
         repo1-s3-uri-style: path
       repos:

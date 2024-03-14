@@ -12,10 +12,10 @@ func PGCluster(ctx *pulumi.Context, nameSpaceName string) error {
 	cfg := config.New(ctx, "")
 	postgresS3BackupSecret := cfg.RequireSecret("postgres_s3_backup_secret")
 
-	_, err := core.NewSecret(ctx, "my-secret", &core.SecretArgs{
+	_, err := core.NewSecret(ctx, "postgres-s3-backup-secret", &core.SecretArgs{
 		Metadata: &meta.ObjectMetaArgs{
-			Name:      pulumi.String("my-secret"),
-			Namespace: pulumi.String("default"),
+			Name:      pulumi.String("postgres-s3-backup-secret"),
+			Namespace: pulumi.String(nameSpaceName),
 		},
 		Type: pulumi.String("Opaque"),
 		StringData: pulumi.StringMap{
