@@ -7,7 +7,6 @@ import (
 )
 
 func PGCluster(ctx *pulumi.Context, nameSpaceName string) error {
-	s3AccessSecret := cfg.RequireSecret("s3_access_secret")
 
 	transformations := []yaml.Transformation{
 		// Make every service private to the cluster, i.e., turn all services into ClusterIP
