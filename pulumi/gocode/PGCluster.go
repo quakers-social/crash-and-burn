@@ -18,7 +18,7 @@ func PGCluster(ctx *pulumi.Context, nameSpaceName string) error {
 			Namespace: pulumi.String(nameSpaceName),
 		},
 		Type: pulumi.String("Opaque"),
-		StringData: pulumi.StringMap{
+		Data: pulumi.StringMap{
 			"s3.conf": postgresS3BackupSecret,
 		},
 	})

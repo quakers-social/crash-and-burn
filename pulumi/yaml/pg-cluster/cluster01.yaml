@@ -18,13 +18,22 @@ spec:
     pgbackrest:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.49-0
       configuration:
-      - secret:
-          name: postgres-s3-backup-secret
+        - secret:
+            name: postgres-s3-backup-secret
       global:
         repo1-s3-uri-style: path
+        repo1-retention-full: "14"
+        repo1-retention-full-type: time
       repos:
-      - name: repo1
-        s3:
-          bucket: "pg-backup"
-          endpoint: "us-west-1.storage.impossibleapi.net.storage.impossibleapi.net"
-          region: "us-west-1"
+        - name: repo1
+          schedules:
+            full: "0 1 * * 0"
+            differential: "0 1 * * 1-6"
+          s3:
+            bucket: "pg-backup"
+            endpoint: "us-west-1.storage.impossibleapi.net"
+            region: "us-west-1"
+      manual:
+        repoName: repo1
+        options:
+         - --type=full
