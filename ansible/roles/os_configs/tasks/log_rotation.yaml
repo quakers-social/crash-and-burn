@@ -1,0 +1,7 @@
+---
+
+- name: Enable logrotation for jourmal
+  ansible.builtin.lineinfile:
+    path: /etc/systemd/journald.conf
+    regexp: '^SystemMaxUse='
+    line: SystemMaxUse=300M

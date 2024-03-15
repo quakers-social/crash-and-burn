@@ -11,3 +11,6 @@
 
 - name: Setup auto upgrade
   include_tasks:  auto_upgrade.yaml
+
+- name: Setup logrotation
+  include_tasks:  log_rotation.yaml
