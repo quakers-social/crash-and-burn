@@ -5,7 +5,7 @@ MASTODON
 MISSION
 -------
 
-Installation of Mastodon on Kubernets.
+Installation of Mastodon on Kubernetes.
 
 
 CODE SNIPET
