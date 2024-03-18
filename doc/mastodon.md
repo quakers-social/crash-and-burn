@@ -5,7 +5,7 @@ MASTODON
 MISSION
 -------
 
-Installation of Mastodon on Kubernets.
+Installation of Mastodon on Kubernetes.
 
 Finde the last version and check the file [`Chart.yaml`](https://github.com/bitnami/charts/blob/main/bitnami/mastodon/Chart.yaml)
 in the Chart Repo.
