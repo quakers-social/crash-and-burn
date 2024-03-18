@@ -28,6 +28,15 @@ func BitnamiMastodon(ctx *pulumi.Context, nameSpaceName string) error {
 		"otpSecret":       otpSecret,
 		"vapidPrivateKey": mastodonVapidPrivateKey,
 		"vapidPublicKey":  pulumi.String(mastodonVapidPublicKey),
+		"apache": pulumi.Map{
+			"enabled": pulumi.Bool(false),
+			"ingress": pulumi.Map{
+				"enabled": pulumi.Bool(false),
+			},
+		},
+		"minio": pulumi.Map{
+			"enabled": pulumi.Bool(false),
+		},
 		"externalS3": pulumi.Map{
 			"existingSecretAccessKeyIDKey": pulumi.String("21D554754B5AB6CF0F635"),
 			"existingSecretKeySecretKey":   s3AccessSecret,
@@ -37,27 +46,25 @@ func BitnamiMastodon(ctx *pulumi.Context, nameSpaceName string) error {
 		},
 		"postgresql": pulumi.Map{
 			"enabled": pulumi.Bool(false),
-			"auth": pulumi.Map{
-				"password": mastodonPostgresPassword,
-			},
+		},
+		"externalDatabase": pulumi.Map{
+			"host":     pulumi.String("mastodon-db-primary.pulumi-apps.svc"),
+			"user":     pulumi.String("mastodon-db"),
+			"password": mastodonPostgresPassword,
+			"database": pulumi.String("mastodon-db"),
+			"port":     pulumi.Int(5432),
 		},
 	}
 
-	// Deploy Mastodon Helm chart
-	_, err := helm.NewChart(ctx, "mastodon", helm.ChartArgs{
-		Path:      pulumi.String("./charts/charts-main/bitnami/mastodon"),
+	_, err := helm.NewChart(ctx, "mastodon-quakers-social", helm.ChartArgs{
+		Chart:     pulumi.String("mastodon"),
+		Version:   pulumi.String("4.7.2"),
 		Namespace: pulumi.String(nameSpaceName),
-		Values:    chartValuse,
+		FetchArgs: &helm.FetchArgs{
+			Repo: pulumi.String("https://charts.bitnami.com/bitnami"),
+		},
+		Values: chartValuse,
 	})
-	// _, err := helm.NewChart(ctx, "mastodon", helm.ChartArgs{
-	// 	Chart:     pulumi.String("mastodon"),
-	// 	Version:   pulumi.String("5.0.0"),
-	// 	Namespace: pulumi.String(nameSpaceName),
-	// 	FetchArgs: &helmv3.FetchArgs{
-	// 		Repo: pulumi.String("https://charts.example.com/"),
-	// 	},
-	// 	Values: chartValuse,
-	// })
 
 	if err != nil {
 		return err

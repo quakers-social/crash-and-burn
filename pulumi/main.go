@@ -1,15 +1,12 @@
 package main
 
 import (
-	// appsv1 "github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/apps/v1"
-	// corev1 "github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/core/v1"
-	// metav1 "github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/meta/v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"quakers-social/gocode"
 )
 
 var CrashAndBurn = func(ctx *pulumi.Context) error {
-	nameSpaceName := "pulumi-apps"
+	nameSpaceName := "quakers-social"
 
 	err := gocode.PulumiNamespace(ctx, nameSpaceName)
 	if err != nil {
@@ -32,6 +29,11 @@ var CrashAndBurn = func(ctx *pulumi.Context) error {
 	}
 
 	err = gocode.PGCluster(ctx, nameSpaceName)
+	if err != nil {
+		return err
+	}
+
+	err = gocode.BitnamiFluxCD(ctx, nameSpaceName)
 	if err != nil {
 		return err
 	}

@@ -40,6 +40,14 @@ See: [Create a Postgres Cluster](https://access.crunchydata.com/documentation/po
 POSTGRESQL CONNECTION
 ---------------------
 
+You find the datebase user, password und hostname (FQDN) in the
+secreat. Enter:
+
+```bash
+$ kubectl get secret mastodon-db-pguser-mastodon-db -n pulumi-apps -oyaml
+```
+
+
 See: [Connect to a Postgres Cluster](https://access.crunchydata.com/documentation/postgres-operator/latest/tutorials/basic-setup/connect-cluster)
 
 

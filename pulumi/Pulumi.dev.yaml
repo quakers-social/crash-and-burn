@@ -5,7 +5,7 @@ config:
   quakers-social:mastodon_otp_secret:
     secure: v1:Nnw/ibL1BqoF35r7:vka/N0YvZMxRcQn5BkZ+kvViqVk6VsauzUB1CvKFI8Trhs3aWaAvouRUoFDff1N44mretunPNIc=
   quakers-social:mastodon_postgres_password:
-    secure: v1:R+gKneoPcnj2AE4l:WxCebc0/jWu03pUH7kxN0ILR4XyM3bXtG90GOAo4KKVeF1Kg0gfNzOSmVsgbA/5cgd4BN/RqQTQ=
+    secure: v1:nikn6qeHDF8rT13h:umDldSwfNlWNmk9mg9GEaEqD5b4At9qySmrjon6q4WhhhkVS6GtT5w==
   quakers-social:mastodon_secret_key_base:
     secure: v1:3zYey4y69/DIR9lc:UV2SdDQTjSUuSJMyWkBrHU8npwluXRZk98iv+3MpjyPWFAHtCF0LDq0E++cLZ23fHewgm+VjdLk=
   quakers-social:mastodon_vapid_private_key:

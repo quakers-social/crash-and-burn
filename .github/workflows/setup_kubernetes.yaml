@@ -15,7 +15,6 @@ jobs:
       - name: download charts
         run: |
           ./scripts/install_k8s_dependencies.sh
-          ./scripts/download_bitnami_mastodon_chart.sh
           ./scripts/download_pg_operator_chart.sh
       - name: Pulumi up
         uses: pulumi/actions@v5
@@ -43,7 +42,6 @@ jobs:
       - name: download K8s-tool,go libs and charts
         run: |
           ./scripts/install_k8s_dependencies.sh
-          ./scripts/download_bitnami_mastodon_chart.sh
           ./scripts/download_pg_operator_chart.sh
       - name: create kubeconfig
         run: echo "${KUBE_CONFIG}" > ${KUBECONFIG} && wc ${KUBECONFIG}
