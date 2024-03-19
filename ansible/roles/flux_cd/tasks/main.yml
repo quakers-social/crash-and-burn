@@ -39,7 +39,7 @@
       kind:                     GitRepository
       metadata:
         name:                   crash-and-burn
-        namespace:              "{{ flux_cd_namespaces }}"
+        namespace:              "flux-system"
       spec:
         interval:               60m
         prune:                  true
@@ -57,7 +57,7 @@
       kind:                     Kustomization
       metadata:
         name:                   mastodon
-        namespace:              "{{ flux_cd_namespaces }}"
+        namespace:              "flux-system"
       spec:
         interval:               1m
         prune:                  true
