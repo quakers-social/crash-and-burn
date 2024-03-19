@@ -1,0 +1,6 @@
+---
+# defaults file for flux_cd
+
+flux_cd_state: present
+flux_cd_download: https://github.com/fluxcd/flux2/releases/latest/download/install.yaml
+flux_cd_namespaces: "fluxcd"

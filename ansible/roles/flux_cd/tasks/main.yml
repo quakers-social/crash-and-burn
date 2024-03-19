@@ -1,0 +1,45 @@
+---
+
+# - name: Add stable bitnami repo
+#   kubernetes.core.helm_repository:
+#     name:             bitnami
+#     repo_url:         "https://charts.bitnami.com/bitnami"
+
+# - name: Deploy Flux chart
+#   kubernetes.core.helm:
+#     name:              fluxcd
+#     release_name:      fluxcd
+#     chart_ref:         bitnami/flux
+#     chart_version:     1.10.1
+#     release_namespace: fluxcd
+#     update_repo_cache: true
+#     create_namespace:  true
+
+
+- name: create namespaces
+  kubernetes.core.k8s:
+    kubeconfig:                 "{{ global_kubeconfig }}"
+    state:                      "{{ flux_cd_state }}"
+    wait:                       "yes"
+    definition:
+      api_version:              v1
+      kind:                     Namespace
+      metadata:
+        name:                   "{{ flux_cd_namespaces }}"
+        labels:
+          name:                 "{{ flux_cd_namespaces }}"
+
+
+- name: download operator
+  ansible.builtin.get_url:
+    url:                        "{{ flux_cd_download }}"
+    dest:                       "/tmp/flux_cd.yaml"
+    mode:                       '0440'
+
+- name: create operator
+  kubernetes.core.k8s:
+    kubeconfig:                 "{{ global_kubeconfig }}"
+    state:                      "{{ flux_cd_state }}"
+    wait:                       "yes"
+    src:                        "/tmp/flux_cd.yaml"
+  when:                         not ansible_check_mode

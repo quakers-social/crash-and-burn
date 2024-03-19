@@ -33,10 +33,10 @@ var CrashAndBurn = func(ctx *pulumi.Context) error {
 		return err
 	}
 
-	err = gocode.BitnamiFluxCD(ctx, nameSpaceName)
-	if err != nil {
-		return err
-	}
+	// err = gocode.BitnamiFluxCD(ctx, nameSpaceName)
+	// if err != nil {
+	// 	return err
+	// }
 
 	// err = gocode.BitnamiMastodon(ctx, nameSpaceName)
 	// if err != nil {

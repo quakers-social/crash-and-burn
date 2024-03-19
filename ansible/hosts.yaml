@@ -8,3 +8,6 @@ all:
 hetzner:
   hosts:
     ubuntu-4gb-hel1-3:
+local:
+  hosts:
+    localhost:

@@ -1,11 +1,19 @@
 ---
 
 - name: Run hetzner
-  hosts: hetzner
+  hosts:        hetzner
   roles:
-    - ping
-    - os_configs
-    - k3s_install
-    - k8s_ansible_requirements
-    - k3s_cert_manager
+    -           ping
+    -           os_configs
+    -           k3s_install
+    -           k8s_ansible_requirements
+    -           k3s_cert_manager
+    -           flux_cd
+    # -           k3s_namespaces
 
+# - name: Run local
+#   hosts:        localhost
+#   connection:   local
+#   gather_facts: false
+#   roles:
+#     -           flux_cd
