@@ -43,3 +43,35 @@
     wait:                       "yes"
     src:                        "/tmp/flux_cd.yaml"
   when:                         not ansible_check_mode
+
+
+- name: create GitRepository
+  kubernetes.core.k8s:
+    kubeconfig:                 "{{ global_kubeconfig }}"
+    state:                      "{{ flux_cd_state }}"
+    wait:                       "yes"
+    definition:
+      apiVersion:               source.toolkit.fluxcd.io/v1
+      kind:                     GitRepository
+      metadata:
+        name:                   app
+      spec:
+        url:                    https://github.com/quakers-social/crash-and-burn.git
+        ref:
+          branch: main
+
+- name: create Kustomization
+  kubernetes.core.k8s:
+    kubeconfig:                 "{{ global_kubeconfig }}"
+    state:                      "{{ flux_cd_state }}"
+    wait:                       "yes"
+    definition:
+      apiVersion:               kustomize.toolkit.fluxcd.io/v1
+      kind:                     Kustomization
+      metadata:
+        name:                   mastodon
+      spec:
+        sourceRef:
+          kind:                 GitRepository
+          name:                 app
+        path:                   ./fluxcd/apps/mastodon
