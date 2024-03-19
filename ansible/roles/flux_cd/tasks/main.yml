@@ -1,21 +1,5 @@
 ---
 
-# - name: Add stable bitnami repo
-#   kubernetes.core.helm_repository:
-#     name:             bitnami
-#     repo_url:         "https://charts.bitnami.com/bitnami"
-
-# - name: Deploy Flux chart
-#   kubernetes.core.helm:
-#     name:              fluxcd
-#     release_name:      fluxcd
-#     chart_ref:         bitnami/flux
-#     chart_version:     1.10.1
-#     release_namespace: fluxcd
-#     update_repo_cache: true
-#     create_namespace:  true
-
-
 - name: create namespaces
   kubernetes.core.k8s:
     kubeconfig:                 "{{ global_kubeconfig }}"
@@ -54,11 +38,14 @@
       apiVersion:               source.toolkit.fluxcd.io/v1
       kind:                     GitRepository
       metadata:
-        name:                   app
+        name:                   crash-and-burn
+        namespace:              "{{ flux_cd_namespaces }}"
       spec:
+        interval:               60m
+        prune:                  true
         url:                    https://github.com/quakers-social/crash-and-burn.git
         ref:
-          branch: main
+          branch:               main
 
 - name: create Kustomization
   kubernetes.core.k8s:
@@ -70,8 +57,11 @@
       kind:                     Kustomization
       metadata:
         name:                   mastodon
+        namespace:              "{{ flux_cd_namespaces }}"
       spec:
+        interval:               1m
+        prune:                  true
         sourceRef:
           kind:                 GitRepository
-          name:                 app
+          name:                 crash-and-burn
         path:                   ./fluxcd/apps/mastodon
