@@ -3,7 +3,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: bitnami
+  name: mastodon
   namespace:  fluxcd
 spec:
   interval: 60m
@@ -13,7 +13,7 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: bitnami-mastodon
+  name: mastodon
   namespace:  fluxcd
 spec:
   chart:
@@ -23,5 +23,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: bitnami
+      interval: 1m
   values:
     replicas: 1
