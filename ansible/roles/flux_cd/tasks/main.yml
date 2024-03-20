@@ -64,4 +64,4 @@
         sourceRef:
           kind:                 GitRepository
           name:                 crash-and-burn
-        path:                   ./fluxcd/apps/mastodon
+        # path:                   ./fluxcd/apps/mastodon
