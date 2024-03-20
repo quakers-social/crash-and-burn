@@ -7,7 +7,6 @@ metadata:
   namespace:    fluxcd
 spec:
   interval:     6m
-  # url:          oci://registry-1.docker.io/bitnamicharts/mastodon
   url:          https://charts.bitnami.com/bitnami/mastodon
 
 ---
