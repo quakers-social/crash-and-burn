@@ -1,30 +1,31 @@
 ---
 
 apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
+kind:         HelmRepository
 metadata:
-  name: mastodon
-  namespace:  fluxcd
+  name:         bitnami
+  namespace:    fluxcd
 spec:
-  interval: 60m
-  url: https://charts.bitnami.com/bitnami
+  type:         oci
+  interval:     60m
+  url:          https://charts.bitnami.com/bitnami
 
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
-kind: HelmRelease
+kind:           HelmRelease
 metadata:
-  name: mastodon
-  namespace:  fluxcd
+  name:         mastodon
+  namespace:    fluxcd
 spec:
-  interval: 1m
-  releaseName: mastodon
+  interval:     1m
+  releaseName:  mastodon
   chart:
     spec:
-      chart: mastodon
-      version: "4.7.2"
+      chart:    mastodon
+      version:  "4.7.2"
       sourceRef:
-        kind: HelmRepository
-        name: mastodon
+        kind:   HelmRepository
+        name:   bitnami
       interval: 1m
   values:
-    replicas: 1
+    replicas:   1
