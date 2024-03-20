@@ -16,13 +16,15 @@ metadata:
   name: mastodon
   namespace:  fluxcd
 spec:
+  interval: 1m
+  releaseName: mastodon
   chart:
     spec:
       chart: mastodon
       version: "4.7.2"
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: mastodon
       interval: 1m
   values:
     replicas: 1
