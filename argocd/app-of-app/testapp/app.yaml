@@ -11,4 +11,4 @@ spec:
     path: guestbook
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd-raw-apps
+    namespace: argocd-aoa
