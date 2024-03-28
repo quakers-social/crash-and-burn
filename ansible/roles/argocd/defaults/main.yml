@@ -19,5 +19,5 @@ argocd_download_url:      https://raw.githubusercontent.com/argoproj/argo-cd/v2.
 # argocd_download_url:      "https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml"
 
 argocd_aoa_state:         "present"
-argocd_aoa_gitbranch:     "mein"
+argocd_aoa_gitbranch:     "main"
 argocd_aoa_gitpath:       "argocd/app-of-app"
