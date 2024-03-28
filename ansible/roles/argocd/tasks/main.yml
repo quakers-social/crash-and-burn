@@ -95,7 +95,7 @@
                         - Replace=true
                         - CreateNamespace=true
         source:
-          repoURL:      https://github.com/OlafRadicke/own_dog_food.git
+          repoURL:      https://github.com/quakers-social/crash-and-burn.git
           targetRevision: "{{ argocd_aoa_gitbranch }}"
           path:         "{{ argocd_aoa_gitpath }}"
           directory:
