@@ -16,8 +16,8 @@ spec:
   # clusterResourceWhitelist:
   # - group:      ''
   #   kind:       Namespace
-  sourceNamespaces:
-  -             argocd-aoa
+  # sourceNamespaces:
+  # -             argocd-aoa
   destinations:
-  - namespace: '*'
-    server: '*'
+  - namespace:  'argocd-aoa'
+    server:     '*'
