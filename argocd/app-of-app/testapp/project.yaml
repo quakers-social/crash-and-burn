@@ -1,18 +1,20 @@
 ---
 
 apiVersion: argoproj.io/v1alpha1
-kind: AppProject
+kind:           AppProject
 metadata:
-  name: testproject
-  namespace: argocd
+  name:         testproject
+  namespace:    argocd
   # Finalizer that ensures that project is not deleted until it is not referenced by any application
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+    -           resources-finalizer.argocd.argoproj.io
 spec:
-  description: Example Project
+  description:  Example Project
   # Allow manifests to deploy from any Git repos
   sourceRepos:
-  - '*'
+  -             '*'
   clusterResourceWhitelist:
-  - group:        ''
-    kind:         Namespace
+  - group:      ''
+    kind:       Namespace
+  sourceNamespaces:
+  -             argocd-aoa
