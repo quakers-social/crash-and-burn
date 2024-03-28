@@ -1,0 +1,105 @@
+---
+
+- name: delete ArgoCD namespace
+  kubernetes.core.k8s:
+    kubeconfig:         "{{ global_kubeconfig }}"
+    name:               "{{ argocd_namespace }}"
+    api_version:        v1
+    kind:               Namespace
+    state:              absent
+    wait:               yes
+  when:                 argocd_reset == true
+
+- name: create ArgoCD namespace
+  kubernetes.core.k8s:
+    kubeconfig:         "{{ global_kubeconfig }}"
+    name:               "{{ argocd_namespace }}"
+    api_version:        v1
+    kind:               Namespace
+    state:              present
+    wait:               yes
+
+
+- name: Download argocd operator
+  ansible.builtin.get_url:
+    url:                "{{ argocd_download_url }}"
+    dest:               "/tmp/argo-insecure-install.yaml"
+    mode:               '0440'
+
+- name: Install ArgoCD with yaml file
+  kubernetes.core.k8s:
+    kubeconfig:         "{{ global_kubeconfig }}"
+    state:              present
+    namespace:          "argocd"
+    wait:               yes
+    wait_timeout:       240
+    src:                "/tmp/argo-insecure-install.yaml"
+
+# - name: Install ArgoCD with yaml file
+#   ansible.builtin.shell: kubectl apply -f /tmp/argo-insecure-install.yaml -n argocd
+#   register: k3s_return
+
+# - debug:
+#     msg: "{{ k3s_return }}"
+
+
+
+- name: add projekt for app-of-app
+  kubernetes.core.k8s:
+    kubeconfig:         "{{ global_kubeconfig }}"
+    state:              "{{ argocd_aoa_state }}"
+    namespace:          "argocd"
+    definition:
+      apiVersion:       argoproj.io/v1alpha1
+      kind:             AppProject
+      metadata:
+        name:           app-of-app
+        namespace:      "argocd"
+        finalizers:
+                        - resources-finalizer.argocd.argoproj.io
+      spec:
+        description:    project of apps of apps from plain yaml
+        sourceRepos:
+                        - '*'
+        destinations:
+        # - namespace:            argocd-raw-apps
+        #   server:               https://kubernetes.default.svc
+        #   name:                 in-cluster
+        # - namespace:            argocd-raw-apps-03
+        #   server:               https://kubernetes.default.svc
+        #   name:                 in-cluster
+        clusterResourceWhitelist:
+        - group:        ''
+          kind:         Namespace
+
+- name: application for app-of-app
+  kubernetes.core.k8s:
+    kubeconfig:         "{{ global_kubeconfig }}"
+    state:              "{{ argocd_aoa_state }}"
+    namespace:          "argocd"
+    definition:
+      apiVersion:       argoproj.io/v1alpha1
+      kind:             Application
+      metadata:
+        name:           app-of-app-test-app
+        namespace:      "argocd"
+        finalizers:
+                        - resources-finalizer.argocd.argoproj.io
+      spec:
+        project:        default
+        syncPolicy:
+          automated:
+            prune:      true
+          syncOptions:
+                        - PruneLast=true
+                        - Replace=true
+                        - CreateNamespace=true
+        source:
+          repoURL:      https://github.com/OlafRadicke/own_dog_food.git
+          targetRevision: "{{ argocd_aoa_gitbranch }}"
+          path:         "{{ argocd_aoa_gitpath }}"
+          directory:
+            recurse:    true
+        destination:
+          server:       https://kubernetes.default.svc
+          namespace:    argocd

@@ -5,6 +5,7 @@ ANSIBLE
   - [MISSION](#mission)
   - [GITLAB ACTION](#gitlab-action)
   - [TROUBLESHOOTING](#troubleshooting)
+  - [UNINSTALL K3S](#uninstall-k3s)
   - [KNOWN ISSUE](#known-issue)
     - [Solution:](#solution)
 
@@ -55,6 +56,20 @@ ansible-playbook \
 
 You find after the playbook run the generated Kubernetes configuration in
 the directory `./ansible/downloads/`
+
+
+UNINSTALL K3S
+-------------
+
+For uninstall the k3s cluster enter:
+
+```bash
+ansible-playbook \
+  -i ./ansible/hosts.yaml \
+  ./ansible/run_uninstall.yaml  \
+  --diff \
+  --check
+```
 
 
 KNOWN ISSUE

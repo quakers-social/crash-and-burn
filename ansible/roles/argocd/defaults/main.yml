@@ -1,0 +1,23 @@
+---
+
+argocd_app_name:          "argocd"
+argocd_namespace:         "argocd"
+# argocd_fqdn_match:                "Host(`argocd.olaf-radicke.de`)"
+argocd_reset:             true
+# global_kubeconfig:                "/etc/rancher/k3s/k3s.yaml"
+argocd_deployment_state:  "present"
+# argocd_letsencrypt:               false
+# argocd_mtls:                      true
+
+# Non-HA: v2.10.4
+argocd_download_url:      https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.4/manifests/install.yaml
+
+# HA: v2.10.4
+# argocd_download_url:      https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.4/manifests/ha/install.yaml
+
+# latest
+# argocd_download_url:      "https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml"
+
+argocd_aoa_state:         "present"
+argocd_aoa_gitbranch:     "mein"
+argocd_aoa_gitpath:       "argocd/app-of-app"

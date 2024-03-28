@@ -8,7 +8,8 @@
     -           k3s_install
     -           k8s_ansible_requirements
     -           k3s_cert_manager
-    -           flux_cd
+    -           argocd
+    # -           flux_cd
     # -           k3s_namespaces
 
 # - name: Run local
