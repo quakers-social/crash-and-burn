@@ -1,0 +1,14 @@
+---
+- name: Create secreat of postgres cluster
+  kubernetes.core.k8s:
+    kubeconfig:         "{{ global_kubeconfig }}"
+    state:              "{{ secret_postgres_cluster_state }}"
+    namespace:          "argocd-aoa"
+    definition:
+      apiVersion:       v1
+      kind: 						Secret
+      metadata:
+        name: 					postgres-s3-backup-secret
+      type: 						Opaque
+      data:
+        s3.conf:					"{{ postgres_s3_backup_secret }}"

@@ -6,6 +6,7 @@ ANSIBLE
   - [GITLAB ACTION](#gitlab-action)
   - [TROUBLESHOOTING](#troubleshooting)
   - [UNINSTALL K3S](#uninstall-k3s)
+  - [ENCRYPTING CONTENT WITH ANSIBLE VAULT](#encrypting-content-with-ansible-vault)
   - [KNOWN ISSUE](#known-issue)
     - [Solution:](#solution)
 
@@ -39,6 +40,7 @@ For a dry run with debug output enter:
 
 ```bash
 ansible-playbook \
+  --vault-password-file  ./ansible/.ansible-password-file \
   -i ./ansible/hosts.yaml \
   ./ansible/install_and_update.yaml  \
   --diff \
@@ -50,6 +52,7 @@ otherwise enter:
 
 ```bash
 ansible-playbook \
+  --vault-password-file  ./ansible/.ansible-password-file \
   -i ./ansible/hosts.yaml \
   ./ansible/install_and_update.yaml
 ```
@@ -70,6 +73,19 @@ ansible-playbook \
   --diff \
   --check
 ```
+
+ENCRYPTING CONTENT WITH ANSIBLE VAULT
+-------------------------------------
+
+The origin documentation [see here](https://docs.ansible.com/ansible/latest/vault_guide/vault_encrypting_content.html)
+
+
+Encrypted variables:
+
+```bash
+ansible-vault encrypt_string --vault-password-file  ./ansible/.ansible-password-file  'foobar' --name 'the_secret'
+```
+
 
 
 KNOWN ISSUE

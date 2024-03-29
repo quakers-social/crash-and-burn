@@ -9,12 +9,6 @@
     -           k8s_ansible_requirements
     -           k3s_cert_manager
     -           argocd
-    # -           flux_cd
-    # -           k3s_namespaces
+    -           postgres-operator
+    -           secret-postgres-closter
 
-# - name: Run local
-#   hosts:        localhost
-#   connection:   local
-#   gather_facts: false
-#   roles:
-#     -           flux_cd

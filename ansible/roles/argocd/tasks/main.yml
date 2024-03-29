@@ -35,13 +35,6 @@
     wait_timeout:       240
     src:                "/tmp/argo-insecure-install.yaml"
 
-# - name: Install ArgoCD with yaml file
-#   ansible.builtin.shell: kubectl apply -f /tmp/argo-insecure-install.yaml -n argocd
-#   register: k3s_return
-
-# - debug:
-#     msg: "{{ k3s_return }}"
-
 - name:           Setup app of app
   include_tasks:  app-of-app.yaml
 
