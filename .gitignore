@@ -1,4 +1,4 @@
 ./ansible/downloads/*
 ansible/downloads/*
 pulumi/charts/
-./ansible/.ansible-password-file
+ansible/.ansible-password-file
