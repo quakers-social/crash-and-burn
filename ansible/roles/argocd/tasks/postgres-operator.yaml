@@ -1,0 +1,26 @@
+---
+
+- name: create ArgoCD namespace
+  kubernetes.core.k8s:
+    kubeconfig:         "{{ global_kubeconfig }}"
+    name:               "postgres-operator"
+    api_version:        v1
+    kind:               Namespace
+    state:              present
+    wait:               yes
+
+- name: Download postgres operator
+  ansible.builtin.get_url:
+    url:                "{{ postgres_operator_download_url }}"
+    dest:               "/tmp/postgres-operator-kustomization.yaml"
+    mode:               '0440'
+
+
+- name: Install ArgoCD with yaml file
+  kubernetes.core.k8s:
+    kubeconfig:         "{{ global_kubeconfig }}"
+    state:              present
+    namespace:          "argocd"
+    wait:               yes
+    wait_timeout:       240
+    src:                "/tmp/postgres-operator-kustomization.yaml"

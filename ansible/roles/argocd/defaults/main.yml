@@ -21,3 +21,5 @@ argocd_download_url:      https://raw.githubusercontent.com/argoproj/argo-cd/v2.
 argocd_aoa_state:         "present"
 argocd_aoa_gitbranch:     "main"
 argocd_aoa_gitpath:       "argocd/app-of-app"
+
+postgres_operator_download_url: https://raw.githubusercontent.com/CrunchyData/postgres-operator-examples/main/kustomize/install/default/kustomization.yaml
