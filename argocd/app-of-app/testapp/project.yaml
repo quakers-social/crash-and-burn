@@ -13,11 +13,6 @@ spec:
   # Allow manifests to deploy from any Git repos
   sourceRepos:
   -             '*'
-  # clusterResourceWhitelist:
-  # - group:      ''
-  #   kind:       Namespace
-  # sourceNamespaces:
-  # -             argocd-aoa
   destinations:
   - namespace:  'argocd-aoa'
     server:     '*'
