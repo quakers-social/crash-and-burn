@@ -4,6 +4,7 @@ metadata:
   name: mastodon-db
   namespace:  argocd-aoa
 spec:
+  openshift: false
   image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-16.2-0
   postgresVersion: 15
   instances:
