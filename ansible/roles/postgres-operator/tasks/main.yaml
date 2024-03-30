@@ -18,7 +18,7 @@
 - name: Install Postgres operatot with yaml file
   ansible.builtin.shell: kubectl apply --server-side -k ./default/ -n postgres-operator
   args:
-    chdir:               /tmp/postgres-operator/kustomize/install
+    chdir:              /tmp/postgres-operator/kustomize/install
   register:             k3s_return
 
 - debug:
