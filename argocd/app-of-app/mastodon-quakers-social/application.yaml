@@ -58,6 +58,7 @@ spec:
   source:
     chart:                    mastodon
     repoURL:                  https://github.com/mastodon/chart
+    path:                     templates
     targetRevision:           HEAD
     helm:
       releaseName:            mastodon-quakers-social
