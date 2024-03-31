@@ -14,13 +14,13 @@ spec:
       valuesObject:
         adminUser:            olaf
         adminEmail:           briefkasten@olaf-radicke.de
-        adminPassword:        "TODO-ChangMe!XXX"
+        adminPassword:        "TODOChangMe"
         localDomain:          mastodon.the-independent-friend.de
         webDomain:            mastodon.the-independent-friend.de
-        secretKeyBase:        mastodonSecretKeyBase
-        otpSecret:            "TODO-ChangMe!XXX"
-        vapidPrivateKey:      "TODO-ChangMe!XXX"
-        vapidPublicKey:       "TODO-ChangMe!XXX"
+        secretKeyBase:        "TODOChangMe"
+        otpSecret:            "TODOChangMe"
+        vapidPrivateKey:      "TODOChangMe"
+        vapidPublicKey:       "TODOChangMe"
         apache:
           enabled: false
           ingress:
@@ -38,7 +38,7 @@ spec:
         externalDatabase:
           host:               mastodon-db-primary.pulumi-apps.svc
           user:               mastodon-db
-          password:           "TODO-ChangMe!XXX"
+          password:           "TODOChangMe"
           database:           mastodon-db
           port:               5432
   destination:
