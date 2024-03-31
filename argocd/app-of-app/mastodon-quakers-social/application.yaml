@@ -56,7 +56,7 @@ metadata:
 spec:
   project:                    default
   source:
-    chart:                    mastodon
+    # chart:                    mastodon
     repoURL:                  https://github.com/mastodon/chart.git
     targetRevision:           HEAD
     path:                     ""
