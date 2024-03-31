@@ -58,7 +58,7 @@ spec:
   source:
     chart:                    mastodon
     repoURL:                  https://github.com/mastodon/chart
-    targetRevision:           main
+    targetRevision:           5.0.0
     helm:
       releaseName:            mastodon-quakers-social
       valuesObject:
