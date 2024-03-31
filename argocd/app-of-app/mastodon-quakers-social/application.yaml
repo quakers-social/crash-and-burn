@@ -1,3 +1,5 @@
+---
+
 # apiVersion:                   argoproj.io/v1alpha1
 # kind:                         Application
 # metadata:
@@ -46,7 +48,11 @@
 #     namespace:                argocd-aoa
 
 
-
+apiVersion:                   argoproj.io/v1alpha1
+kind:                         Application
+metadata:
+  name:                       mastodon-quakers-social
+  namespace:                  argocd
 spec:
   project:                    default
   source:
