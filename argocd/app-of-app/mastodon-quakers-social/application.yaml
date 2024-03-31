@@ -29,7 +29,7 @@ spec:
           enabled: false
         externalS3:
           existingSecretAccessKeyIDKey: 21D554754B5AB6CF0F635
-          existingSecretKeySecretKey:   "TODO-ChangMe!XXX"
+          existingSecretKeySecretKey:   "TODOChangMe"
           bucket:             mastodon001
           host:               us-west-1.storage.impossibleapi.net
           region:             us-west-1
