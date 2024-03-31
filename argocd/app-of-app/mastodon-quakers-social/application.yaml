@@ -57,7 +57,7 @@ spec:
   project:                    default
   source:
     chart:                    mastodon
-    repoURL:                  https://github.com/mastodon/chart
+    repoURL:                  https://github.com/mastodon/chart.git
     path:                     templates
     targetRevision:           HEAD
     helm:
