@@ -17,3 +17,44 @@
   #   depends_on:
   #     - db
   #     - redis
+
+apiVersion:           apps/v1
+kind:                 Deployment
+metadata:
+  name:               mastodon-streaming
+  labels:
+    app:              mastodon-streaming
+spec:
+  replicas:           1
+  selector:
+    matchLabels:
+      app:            mastodon-streaming
+  template:
+    metadata:
+      labels:
+        app:          mastodon-streaming
+    spec:
+      containers:
+      - name:         mastodon-streaming
+        image:        ghcr.io/mastodon/mastodon:v4.2.7
+        command:      ["node"]
+        args:         ["./streaming"]
+        livenessProbe:
+          tcpSocket:
+            port: 4000
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 4000
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        ports:
+        - containerPort: 4000
+        resources:
+          limits:
+            memory:   200Mi
+            cpu:      1
+          requests:
+            memory:   100Mi
+            cpu:      100m
