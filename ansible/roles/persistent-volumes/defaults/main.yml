@@ -1,5 +1,5 @@
 ---
-
+k3s_kubeconfig:           "/etc/rancher/k3s/k3s.yaml"
 persistent_volumes_state: "present"
 persistent_volumes_pvcs:
-  - mastodon-01
+  -                       mastodon-01

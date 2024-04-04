@@ -23,7 +23,7 @@ kind:               PersistentVolumeClaim
 metadata:
   name:             mastodon-system
 spec:
-  storageClassName: mastodon-01
+  storageClassName: local-mastodon-01
   accessModes:
     -               ReadWriteMany
   resources:
