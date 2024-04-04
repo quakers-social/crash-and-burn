@@ -21,7 +21,14 @@ spec:
       - name:         mastodon-web
         image:        ghcr.io/mastodon/mastodon:v4.2.7
         command:      ["bundle"]
-        args:         ["exec", "puma", "-C", "config/puma.rb"]
+        args:
+          -           "install"
+          -           "&&"
+          -           "bundle"
+          -           "exec"
+          -           "puma"
+          -           "-C"
+          -           "config/puma.rb"
         livenessProbe:
           httpGet:
             path: /health
