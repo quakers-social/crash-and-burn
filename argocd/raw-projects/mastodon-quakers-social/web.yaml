@@ -41,10 +41,8 @@ spec:
       containers:
       - name:         mastodon-web
         image:        ghcr.io/mastodon/mastodon:v4.2.7
-        command:      ["pwd"]
-        args:         [""]
-        # command:      ["bundle"]
-        # args:         ["exec", "puma", "-C", "config/puma.rb"]
+        command:      ["bundle"]
+        args:         ["exec", "puma", "-C", "config/puma.rb"]
         livenessProbe:
           httpGet:
             path: /health
