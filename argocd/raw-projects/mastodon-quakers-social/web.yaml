@@ -27,7 +27,7 @@ spec:
           -           "bundle"
           -           "exec"
           -           "puma"
-          -           "-C"
+          -           "-c"
           -           "config/puma.rb"
         livenessProbe:
           httpGet:
