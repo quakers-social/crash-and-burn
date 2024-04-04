@@ -23,12 +23,12 @@ spec:
         command:      ["bundle"]
         args:
           -           "install"
-          -           "&&"
-          -           "bundle"
-          -           "exec"
-          -           "puma"
-          -           "-c"
-          -           "config/puma.rb"
+          # -           "&&"
+          # -           "bundle"
+          # -           "exec"
+          # -           "puma"
+          # -           "-C"
+          # -           "config/puma.rb"
         livenessProbe:
           httpGet:
             path: /health
