@@ -71,7 +71,7 @@ spec:
           mountPath:  /mastodon/public/system
         - name:       secret-volume
           readOnly: true
-          mountPath:  "/home/mastodon/live/"
+          mountPath:  "/opt/mastodon"
       volumes:
       - name:         mastodon-system
         emptyDir:
