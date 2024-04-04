@@ -44,9 +44,9 @@ spec:
             cpu:      100m
         volumeMounts:
         - name:       mastodon-system
-          mountPath:  /mastodon/public/system
+          mountPath:  /opt/mastodon/public/system
         - name:       mastodon-assets
-          mountPath:  /mastodon/public/assets
+          mountPath:  /opt/mastodon/public/assets
         - name:       secret-volume
           readOnly: true
           mountPath:  "/opt/mastodon"
