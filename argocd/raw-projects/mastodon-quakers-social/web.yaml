@@ -71,8 +71,7 @@ spec:
           mountPath:  "/opt/mastodon"
       volumes:
       - name:         mastodon-system
-        emptyDir:
-          sizeLimit:  100Mi
+        emptyDir:     {}
       - name:         secret-volume
         secret:
           secretName: mastodon-env-production
