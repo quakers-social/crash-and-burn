@@ -20,7 +20,7 @@
       spec:
         storageClassName:     "local-{{ item }}"
         capacity:
-          storage:            1Gi
+          storage:            20Gi
         accessModes:
           -                   ReadWriteMany
           # -                   ReadWriteOnce
