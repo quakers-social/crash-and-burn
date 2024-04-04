@@ -18,23 +18,23 @@ spec:
         app:          mastodon-web
     spec:
       containers:
-      - name:         mastodon-web
+      - name:         mastodon-sidekiq
         image:        ghcr.io/mastodon/mastodon:v4.2.7
         command:      ["bundle"]
-        args:         ["exec", "puma", "-C", "config/puma.rb"]
+        args:         ["exec", "sidekiq"]
         livenessProbe:
-          httpGet:
-            path: /health
-            port: 3000
-          initialDelaySeconds: 15
-          periodSeconds: 10
-        readinessProbe:
-          tcpSocket:
-            port: 3000
-          initialDelaySeconds: 15
-          periodSeconds: 10
-        ports:
-        - containerPort: 3000
+          exec:
+            command:
+            - "CMD-SHELL"
+            - "ps"
+            - "aux"
+            - "|"
+            - "grep"
+            - '[s]idekiq\ 6'
+            - "||"
+            - "false"
+          initialDelaySeconds: 5
+          periodSeconds: 5
         resources:
           limits:
             memory:   200Mi
@@ -44,11 +44,8 @@ spec:
             cpu:      100m
         volumeMounts:
         - name:       mastodon-system
-          # mountPath:  /mastodon/public
-          mountPath:  /mastodon/public/system
-        - name:       mastodon-assets
-          # mountPath:  /mastodon/public
-          mountPath:  /mastodon/public/assets
+          mountPath:  /mastodon/public
+          # mountPath:  /mastodon/public/system
         - name:       secret-volume
           readOnly: true
           mountPath:  "/opt/mastodon"
