@@ -54,14 +54,14 @@
 apiVersion:         argoproj.io/v1alpha1
 kind:               Application
 metadata:
-  name:             mastodon-db
+  name:             mastodon-quakers-social
   namespace:        argocd
 spec:
-  project:          mastodon-db
+  project:          mastodon-quakers-social
   source:
     repoURL:        https://github.com/quakers-social/crash-and-burn.git
     targetRevision: HEAD
-    path:           argocd/raw-projects/mastodon
+    path:           argocd/raw-projects/mastodon-quakers-social
   destination:
     server:         https://kubernetes.default.svc
     namespace:      argocd-aoa
