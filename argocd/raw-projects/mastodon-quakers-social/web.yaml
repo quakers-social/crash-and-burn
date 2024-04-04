@@ -20,3 +20,64 @@
   #     # - es
   #   volumes:
   #     - ./public/system:/mastodon/public/system
+
+
+apiVersion:           apps/v1
+kind:                 Deployment
+metadata:
+  name:               mastodon-web
+  labels:
+    app:              mastodon-web
+spec:
+  replicas:           1
+  selector:
+    matchLabels:
+      app:            mastodon-web
+  template:
+    metadata:
+      labels:
+        app:          mastodon-web
+    spec:
+      containers:
+      - name:         mastodon-web
+        image:        ghcr.io/mastodon/mastodon:v4.2.7
+        command:      ["bundle"]
+        args:         ["exec", "puma", "-C", "config/puma.rb"]
+        livenessProbe:
+          exec:
+            command:
+            - 'CMD-SHELL'
+            - 'wget'
+            - '-q'
+            - '--spider'
+            - '--proxy=off'
+            - 'localhost:3000/health'
+            - '||'
+            - 'exit'
+            - '1'
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            memory:   200Mi
+            cpu:      1
+          requests:
+            memory:   100Mi
+            cpu:      100m
+        volumeMounts:
+        - name:       mastodon-system
+          mountPath:  /mastodon/public/system
+        - name:       secret-volume
+          readOnly: true
+          mountPath:  "/home/mastodon/live/"
+      volumes:
+      - name:         mastodon-system
+        emptyDir:
+          sizeLimit:  100Mi
+      - name:         secret-volume
+        secret:
+          secretName: mastodon-env-production
+
+
