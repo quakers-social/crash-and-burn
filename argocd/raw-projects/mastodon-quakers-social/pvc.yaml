@@ -26,6 +26,7 @@ spec:
   storageClassName: local-mastodon-01
   accessModes:
     -               ReadWriteMany
+    # -               ReadWriteOnce
   resources:
     requests:
       storage:      10Gi
@@ -37,7 +38,7 @@ kind:               PersistentVolumeClaim
 metadata:
   name:             mastodon-assets
 spec:
-  storageClassName: local-mastodon-01
+  storageClassName: local-mastodon-02
   accessModes:
     -               ReadWriteMany
   resources:

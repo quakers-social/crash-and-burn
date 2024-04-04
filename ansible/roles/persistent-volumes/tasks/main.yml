@@ -1,5 +1,8 @@
 ---
 
+
+
+
 - name:                       create pv
   kubernetes.core.k8s:
     kubeconfig:               "{{ k3s_kubeconfig }}"
@@ -20,6 +23,7 @@
           storage:            1Gi
         accessModes:
           -                   ReadWriteMany
+          # -                   ReadWriteOnce
         persistentVolumeReclaimPolicy: Retain
         local:
           path:               "/srv/persistent-volume-{{ item }}"
@@ -35,3 +39,16 @@
         #   path:           "/srv/persistent-volume-{{ item }}"
   loop:                   "{{ persistent_volumes_pvcs }}"
 
+- name:                   set WaitForFirstConsumer
+  kubernetes.core.k8s:
+    kubeconfig:           "{{ k3s_kubeconfig }}"
+    state:                "{{ persistent_volumes_state }}"
+    wait:                 "yes"
+    definition:
+      apiVersion:         storage.k8s.io/v1
+      kind:               StorageClass
+      metadata:
+        name:             "local-{{ item }}"
+      provisioner:        kubernetes.io/no-provisioner
+      volumeBindingMode:  WaitForFirstConsumer
+  loop:                   "{{ persistent_volumes_pvcs }}"
