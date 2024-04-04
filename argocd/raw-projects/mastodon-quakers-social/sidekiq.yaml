@@ -4,18 +4,18 @@
 apiVersion:           apps/v1
 kind:                 Deployment
 metadata:
-  name:               mastodon-web
+  name:               mastodon-sidekiq
   labels:
-    app:              mastodon-web
+    app:              mastodon-sidekiq
 spec:
   replicas:           1
   selector:
     matchLabels:
-      app:            mastodon-web
+      app:            mastodon-sidekiq
   template:
     metadata:
       labels:
-        app:          mastodon-web
+        app:          mastodon-sidekiq
     spec:
       containers:
       - name:         mastodon-sidekiq
