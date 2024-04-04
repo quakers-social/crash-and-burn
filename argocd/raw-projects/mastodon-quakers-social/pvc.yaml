@@ -1,19 +1,19 @@
----
+# ---
 
-kind:               PersistentVolume
-apiVersion:         v1
-metadata:
-  name:             mastodon-01
-  labels:
-    type:           local
-spec:
-  storageClassName: mastodon-01
-  capacity:
-    storage:        1Gi
-  accessModes:
-    -               ReadWriteMany
-  hostPath:
-    path:           "/srv/persistent-volume-01"
+# kind:               PersistentVolume
+# apiVersion:         v1
+# metadata:
+#   name:             mastodon-01
+#   labels:
+#     type:           local
+# spec:
+#   storageClassName: mastodon-01
+#   capacity:
+#     storage:        1Gi
+#   accessModes:
+#     -               ReadWriteMany
+#   hostPath:
+#     path:           "/srv/persistent-volume-01"
 
 
 ---

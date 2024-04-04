@@ -9,8 +9,7 @@ metadata:
   finalizers:
     -           resources-finalizer.argocd.argoproj.io
 spec:
-  description:  Example Project
-  # Allow manifests to deploy from any Git repos
+  description:  mastodon
   sourceRepos:
   -             '*'
   destinations:
