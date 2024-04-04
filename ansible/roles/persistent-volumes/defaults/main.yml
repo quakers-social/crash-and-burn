@@ -1,0 +1,5 @@
+---
+
+persistent_volumes_state: "present"
+persistent_volumes_pvcs:
+  - mastodon-01

@@ -1,0 +1,26 @@
+---
+
+- name:                   create pv
+  kubernetes.core.k8s:
+    kubeconfig:           "{{ k3s_kubeconfig }}"
+    state:                "{{ persistent_volumes_state }}"
+    wait:                 "yes"
+    definition:
+      kind:               PersistentVolume
+      apiVersion:         v1
+      metadata:
+        name:             "{{ item }}"
+        labels:
+          type:           local
+        annotations:
+          storageclass.kubernetes.io/is-default-class: "false"
+      spec:
+        storageClassName: "{{ item }}"
+        capacity:
+          storage:        1Gi
+        accessModes:
+          -               ReadWriteMany
+        hostPath:
+          path:           "/srv/persistent-volume-{{ item }}"
+  loop:                   "{{ persistent_volumes_pvcs }}"
+
