@@ -28,4 +28,18 @@ spec:
     -               ReadWriteMany
   resources:
     requests:
-      storage:      1Gi
+      storage:      10Gi
+
+---
+
+apiVersion:         v1
+kind:               PersistentVolumeClaim
+metadata:
+  name:             mastodon-assets
+spec:
+  storageClassName: local-mastodon-01
+  accessModes:
+    -               ReadWriteMany
+  resources:
+    requests:
+      storage:      10Gi
