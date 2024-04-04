@@ -44,7 +44,8 @@ spec:
             cpu:      100m
         volumeMounts:
         - name:       mastodon-system
-          mountPath:  /mastodon/public/system
+          mountPath:  /mastodon/public
+          # mountPath:  /mastodon/public/system
         - name:       secret-volume
           readOnly: true
           mountPath:  "/opt/mastodon"
