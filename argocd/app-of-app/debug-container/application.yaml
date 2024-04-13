@@ -1,0 +1,16 @@
+---
+
+apiVersion:         argoproj.io/v1alpha1
+kind:               Application
+metadata:
+  name:             debug-container
+  namespace:        argocd
+spec:
+  project:          debug-container
+  source:
+    repoURL:        https://github.com/quakers-social/crash-and-burn.git
+    targetRevision: HEAD
+    path:           argocd/raw-projects/debug-container
+  destination:
+    server:         https://kubernetes.default.svc
+    namespace:      argocd-aoa
