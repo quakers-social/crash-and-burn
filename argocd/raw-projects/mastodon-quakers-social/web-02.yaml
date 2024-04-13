@@ -46,7 +46,7 @@ spec:
         #   mountPath:  /opt/mastodon/public/assets
         - name:       secret-volume
           readOnly: true
-          mountPath:  "/home/mastodon/.rbenv/live"
+          mountPath:  "/home/mastodon/.rbenv/live/.env.production"
       volumes:
       - name:         mastodon-system
         persistentVolumeClaim:
