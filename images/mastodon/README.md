@@ -9,10 +9,10 @@ BUILD
 podman build -t quakers-social/mastodon-web:latest .
 ```
 
-or
+or without cache
 
 ```bash
-podman build -t quakers-social/mastodon-web:latest --no-cache=false .
+podman build -t quakers-social/mastodon-web:latest --no-cache=true .
 ```
 
 IMAGE DEBUGGING
@@ -31,10 +31,25 @@ For investigation in the image enter:
 podman run --rm -it --entrypoint=sh quakers-social/mastodon-web:latest
 ```
 
+IMAGE PUSH BY HAND
+------------------
+
+```bash
+podman login docker.io
+LATES_VERSION=0.5.1
+DOCKER_ACCOUNT=olafradicke
+podman tag  quakers-social/mastodon-web:latest  ${DOCKER_ACCOUNT}/mastodon-web:${LATES_VERSION}
+podman push ${DOCKER_ACCOUNT}/mastodon-web:${LATES_VERSION}
+```
+
+
+
 NOTES
 -----
 
 https://www.digitalocean.com/community/tutorials/how-to-install-mastodon-on-ubuntu-20-04
+
+https://docs.joinmastodon.org/admin/config/
 
 web-container port:3000
 stream container port:4000
