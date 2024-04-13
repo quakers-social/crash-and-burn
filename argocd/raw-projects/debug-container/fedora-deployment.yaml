@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name:             debugging-host
-          image:            jonlabelle/network-tools
+          image:            nicolaka/netshoot
           imagePullPolicy:  "IfNotPresent"
           resources:
             requests:
