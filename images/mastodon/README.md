@@ -6,13 +6,13 @@ BUILD
 -----
 
 ```bash
-podman build -t quakers-social/mastodon:latest .
+podman build -t quakers-social/mastodon-web:latest .
 ```
 
 or
 
 ```bash
-podman build -t quakers-social/mastodon:latest --no-cache=false .
+podman build -t quakers-social/mastodon-web:latest --no-cache=false .
 ```
 
 IMAGE DEBUGGING
@@ -21,16 +21,20 @@ IMAGE DEBUGGING
 Start
 
 ```bash
-podman run --rm -it -p 3000:3000 quakers-social/mastodon:latest
+podman run --rm -it -p 3000:3000 quakers-social/mastodon-web:latest
 ```
 
 
 For investigation in the image enter:
 
 ```bash
-podman run --rm -it --entrypoint=sh quakers-social/mastodon:latest
+podman run --rm -it --entrypoint=sh quakers-social/mastodon-web:latest
 ```
 
+NOTES
+-----
+
+https://www.digitalocean.com/community/tutorials/how-to-install-mastodon-on-ubuntu-20-04
 
 web-container port:3000
 stream container port:4000
