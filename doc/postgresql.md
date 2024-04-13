@@ -44,7 +44,7 @@ You find the datebase user, password und hostname (FQDN) in the
 secreat. Enter:
 
 ```bash
-$ kubectl get secret mastodon-db-pguser-mastodon-db -n pulumi-apps -oyaml
+$ kubectl get secret mastodon-db-pguser-mastodon-db -n argocd-aoa -oyaml
 ```
 
 
