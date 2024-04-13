@@ -22,6 +22,11 @@ spec:
         resources:
           requests:
             storage: 5Gi
+  users:
+    - name: mastodonsu
+      databases:
+        - mastodon-db
+      options: "SUPERUSER"
   backups:
     pgbackrest:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.49-0
