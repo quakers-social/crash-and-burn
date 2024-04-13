@@ -1,7 +1,7 @@
 FROM ruby:3-bookworm
 
 ENV HOME="/home/mastodon"
-ENV PATH="$HOME/.rbenv/bin:$PATH"
+ENV PATH="$HOME/.rbenv/live/bin:$PATH"
 ENV RUBY_CONFIGURE_OPTS="--with-jemalloc rbenv install 3.2.3"
 ENV RAILS_ENV=production
 
@@ -35,7 +35,8 @@ RUN git checkout $(git tag -l | grep '^v[0-9.]*$' | sort -V | tail -n 1)
 RUN bundle config deployment 'true'
 RUN bundle config without 'development test'
 RUN bundle install -j$(getconf _NPROCESSORS_ONLN)
+COPY .env.production.example /home/mastodon/.rbenv/live/.env.production
 # RUN yarn install --pure-lockfile
 # RUN bundle exec rake mastodon:setup
-ENTRYPOINT ["/home/mastodon/.rbenv/shims/bundle", "exec", "puma", "-C", "config/puma.rb"]
+ENTRYPOINT ["/home/mastodon/.rbenv/live/bin/bundle", "exec", "puma", "-C", "config/puma.rb"]
 
