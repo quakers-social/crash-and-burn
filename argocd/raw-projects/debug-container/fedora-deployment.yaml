@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name:             debugging-host
-          image:            dolphm/network-tools:latest
+          image:            alpine:latest
           imagePullPolicy:  "IfNotPresent"
           resources:
             requests:
@@ -32,5 +32,5 @@ spec:
           env:
           - name:           LANG
             value:          de_DE
-          # command:          ["/bin/sh"]
-          # args:             ["-c", "while true; do echo hello; sleep 10;done"]
+          command:          ["/bin/sh"]
+          args:             ["-c", "while true; do echo hello; sleep 10;done"]
