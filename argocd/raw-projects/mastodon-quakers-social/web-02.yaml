@@ -41,12 +41,13 @@ spec:
             cpu:      100m
         volumeMounts:
         - name:       mastodon-system
-          mountPath:  /home/mastodon/.rbenv/live/public
-        # - name:       mastodon-assets
-        #   mountPath:  /opt/mastodon/public/assets
+          mountPath:  /home/mastodon/.rbenv/live/public/system
+        - name:       mastodon-assets
+          mountPath:  /home/mastodon/.rbenv/live/public/assets
         - name:       secret-volume
           readOnly: true
           mountPath:  "/home/mastodon/.rbenv/live/.env.production"
+          subPath:    ".env.production"
       volumes:
       - name:         mastodon-system
         persistentVolumeClaim:
