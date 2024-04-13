@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name:             debugging-host
-          image:            fedora:39
+          image:            jonlabelle/network-tools
           imagePullPolicy:  "IfNotPresent"
           resources:
             requests:
