@@ -16,30 +16,30 @@ spec:
       labels:
         app:          mastodon-web
     spec:
-      initContainers:
-      - name:         mastodon-web-init
-        image:        olafradicke/mastodon-web:0.5.1
-        resources:
-          limits:
-            memory:   200Mi
-            cpu:      1
-          requests:
-            memory:   100Mi
-            cpu:      100m
-        env:
-        - name: RAILS_ENV
-          value: "production"
-      #   command: ["rake", "db:migrate"]
-        command: ["rails", "assets:precompile"]
-        volumeMounts:
-        - name:       mastodon-system
-          mountPath:  /home/mastodon/.rbenv/live/public/system
-        - name:       mastodon-assets
-          mountPath:  /home/mastodon/.rbenv/live/public/assets
-        - name:       secret-volume
-          readOnly: true
-          mountPath:  "/home/mastodon/.rbenv/live/.env.production"
-          subPath:    ".env.production"
+      # initContainers:
+      # - name:         mastodon-web-init
+      #   image:        olafradicke/mastodon-web:0.5.1
+      #   resources:
+      #     limits:
+      #       memory:   200Mi
+      #       cpu:      1
+      #     requests:
+      #       memory:   100Mi
+      #       cpu:      100m
+      #   env:
+      #   - name: RAILS_ENV
+      #     value: "production"
+      # #   command: ["rake", "db:migrate"]
+      #   command: ["rails", "assets:precompile"]
+      #   volumeMounts:
+      #   - name:       mastodon-system
+      #     mountPath:  /home/mastodon/.rbenv/live/public/system
+      #   - name:       mastodon-assets
+      #     mountPath:  /home/mastodon/.rbenv/live/public/assets
+      #   - name:       secret-volume
+      #     readOnly: true
+      #     mountPath:  "/home/mastodon/.rbenv/live/.env.production"
+      #     subPath:    ".env.production"
       containers:
       - name:         mastodon-web
         image:        olafradicke/mastodon-web:0.5.3
