@@ -14,7 +14,8 @@ RUN apt install -y \
 	lsb-release \
 	ca-certificates \
 	libldap2-dev \
-	libidn11-dev
+	libidn11-dev \
+	postgresql
 
 RUN adduser --disabled-login mastodon
 WORKDIR /home/mastodon
@@ -37,7 +38,8 @@ RUN git checkout $(git tag -l | grep '^v[0-9.]*$' | sort -V | tail -n 1) \
     && bundle config without 'development test' \
     && bundle install -j$(getconf _NPROCESSORS_ONLN)
 COPY .env.production.example /home/mastodon/.rbenv/live/.env.production
+COPY entryscript.sh /entryscript.sh
 # RUN yarn install --pure-lockfile
 # RUN bundle exec rake mastodon:setup
-ENTRYPOINT ["/home/mastodon/.rbenv/live/bin/bundle", "exec", "puma", "-C", "config/puma.rb"]
+ENTRYPOINT ["/entryscript.sh"]
 

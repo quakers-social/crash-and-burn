@@ -38,7 +38,7 @@ spec:
       #     subPath:    ".env.production"
       containers:
       - name:         mastodon-web
-        image:        olafradicke/mastodon-web:0.5.1
+        image:        olafradicke/mastodon-web:0.5.2
         livenessProbe:
           httpGet:
             path: /health
