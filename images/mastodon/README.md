@@ -36,7 +36,7 @@ IMAGE PUSH BY HAND
 
 ```bash
 podman login docker.io
-LATES_VERSION=0.5.2
+LATES_VERSION=0.5.3
 DOCKER_ACCOUNT=olafradicke
 podman tag  quakers-social/mastodon-web:latest  ${DOCKER_ACCOUNT}/mastodon-web:${LATES_VERSION}
 podman push ${DOCKER_ACCOUNT}/mastodon-web:${LATES_VERSION}
