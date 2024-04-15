@@ -66,6 +66,8 @@ spec:
         env:
         - name: RAILS_ENV
           value: "production"
+        - name: RAILS_LOG_LEVEL
+          value: "debug"
         volumeMounts:
         - name:       mastodon-system
           mountPath:  /home/mastodon/.rbenv/live/public/system
