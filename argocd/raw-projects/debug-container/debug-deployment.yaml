@@ -1,0 +1,32 @@
+---
+
+# A pod for debogging
+
+apiVersion:                 apps/v1
+kind:                       Deployment
+metadata:
+  name:                     debugging-host
+spec:
+  replicas:                 1
+  selector:
+    matchLabels:
+      app:                  debugging-host
+  template:
+    metadata:
+      labels:
+        app:                debugging-host
+    spec:
+      containers:
+        - name:             debugging-host
+          image:            olafradicke/debugging:0.0.1
+          imagePullPolicy:  "IfNotPresent"
+          resources:
+            requests:
+              memory:       "64Mi"
+              cpu:          "250m"
+            limits:
+              memory:       "128Mi"
+              cpu:          "500m"
+          env:
+          - name:           LANG
+            value:          de_DE
