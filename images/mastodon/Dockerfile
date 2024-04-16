@@ -1,5 +1,7 @@
 FROM ruby:3-bookworm
 
+ARG M_VERSION=v4.2.8
+
 ENV HOME="/home/mastodon"
 ENV PATH="$HOME/.rbenv/live/bin:$PATH"
 ENV RUBY_CONFIGURE_OPTS="--with-jemalloc rbenv install 3.2.3"
@@ -30,10 +32,9 @@ RUN ${HOME}/.rbenv/src/configure \
 	   /home/mastodon/.rbenv/plugins/ruby-build \
     && gem install bundler --no-document \
     && git clone https://github.com/mastodon/mastodon.git \
-	   --depth=1 \
 	   /home/mastodon/.rbenv/live
 WORKDIR /home/mastodon/.rbenv/live
-RUN git checkout $(git tag -l | grep '^v[0-9.]*$' | sort -V | tail -n 1) \
+RUN git checkout ${M_VERSION} \
     && bundle config deployment 'true' \
     && bundle config without 'development test' \
     && bundle install -j$(getconf _NPROCESSORS_ONLN)
