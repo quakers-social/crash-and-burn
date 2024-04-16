@@ -6,6 +6,8 @@ ENV HOME="/home/mastodon"
 ENV PATH="$HOME/.rbenv/live/bin:$PATH"
 ENV RUBY_CONFIGURE_OPTS="--with-jemalloc rbenv install 3.2.3"
 ENV RAILS_ENV=production
+ENV PORT=3000
+ENV LD_PRELOAD=libjemalloc.so
 
 RUN apt-get update
 RUN apt install -y \
@@ -37,7 +39,8 @@ WORKDIR /home/mastodon/.rbenv/live
 RUN git checkout ${M_VERSION} \
     && bundle config deployment 'true' \
     && bundle config without 'development test' \
-    && bundle install -j$(getconf _NPROCESSORS_ONLN)
+    && bundle install -j$(getconf _NPROCESSORS_ONLN) \
+	&& yarn install --pure-lockfile
 COPY .env.production.example /home/mastodon/.rbenv/live/.env.production
 COPY entryscript.sh /entryscript.sh
 # RUN yarn install --pure-lockfile
