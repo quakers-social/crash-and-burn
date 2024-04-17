@@ -4,6 +4,8 @@ set -x
 set -e
 set -u
 
+pwd
+
 cat /home/mastodon/.rbenv/live/.env.production
 . /home/mastodon/.rbenv/live/.env.production
 
