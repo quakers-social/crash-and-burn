@@ -51,5 +51,6 @@ COPY .env.production.example /home/mastodon/.rbenv/live/.env.production
 COPY entryscript.sh /entryscript.sh
 # RUN yarn install --pure-lockfile
 # RUN bundle exec rake mastodon:setup
+
 ENTRYPOINT ["/entryscript.sh"]
 
