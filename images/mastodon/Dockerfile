@@ -21,7 +21,8 @@ RUN apt install -y \
 	lsb-release \
 	ca-certificates \
 	libldap2-dev \
-	libidn11-dev
+	libidn11-dev \
+	postgresql
 
 # RUN find / -name "libjemalloc*"
 
