@@ -19,5 +19,6 @@ export PGPASSWORD=${DB_PASS}
 
 psql -U ${DB_USER} -h ${DB_HOST} -d ${DB_NAME} -p ${DB_PORT} -S -c "\d"
 
+ls -lah /home/mastodon/.rbenv/live/public/assets/
 rails assets:precompile || true
 /home/mastodon/.rbenv/live/bin/bundle exec puma -C config/puma.rb

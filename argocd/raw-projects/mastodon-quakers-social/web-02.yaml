@@ -51,17 +51,17 @@ spec:
         securityContext:
           runAsUser: 1000
           allowPrivilegeEscalation: false
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 3000
-          initialDelaySeconds: 15
-          periodSeconds: 10
-        readinessProbe:
-          tcpSocket:
-            port: 3000
-          initialDelaySeconds: 15
-          periodSeconds: 10
+        # livenessProbe:
+        #   httpGet:
+        #     path: /health
+        #     port: 3000
+        #   initialDelaySeconds: 15
+        #   periodSeconds: 10
+        # readinessProbe:
+        #   tcpSocket:
+        #     port: 3000
+        #   initialDelaySeconds: 15
+        #   periodSeconds: 10
         ports:
         - containerPort: 3000
         resources:
