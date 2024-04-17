@@ -1,4 +1,5 @@
-FROM ruby:3-bookworm
+FROM ruby:3.2-bookworm
+
 
 ARG M_VERSION=v4.2.8
 
@@ -6,8 +7,10 @@ ENV HOME="/home/mastodon"
 ENV PATH="$HOME/.rbenv/live/bin:$PATH"
 ENV RUBY_CONFIGURE_OPTS="--with-jemalloc rbenv install 3.2.3"
 ENV RAILS_ENV=production
+# ENV RAILS_SERVE_STATIC_FILES=true
+# ENV RUN_DB_MIGRATIONS=true
 ENV PORT=3000
-ENV LD_PRELOAD=libjemalloc.so
+# ENV LD_PRELOAD=libjemalloc.so
 
 RUN apt-get update
 RUN apt install -y \
@@ -18,8 +21,9 @@ RUN apt install -y \
 	lsb-release \
 	ca-certificates \
 	libldap2-dev \
-	libidn11-dev \
-	postgresql
+	libidn11-dev
+
+# RUN find / -name "libjemalloc*"
 
 RUN adduser --disabled-login mastodon
 WORKDIR /home/mastodon
@@ -39,8 +43,8 @@ WORKDIR /home/mastodon/.rbenv/live
 RUN git checkout ${M_VERSION} \
     && bundle config deployment 'true' \
     && bundle config without 'development test' \
-    && bundle install -j$(getconf _NPROCESSORS_ONLN) \
-	&& yarn install --pure-lockfile
+    && bundle install -j$(getconf _NPROCESSORS_ONLN)
+# RUN yarn install --pure-lockfile
 COPY .env.production.example /home/mastodon/.rbenv/live/.env.production
 COPY entryscript.sh /entryscript.sh
 # RUN yarn install --pure-lockfile

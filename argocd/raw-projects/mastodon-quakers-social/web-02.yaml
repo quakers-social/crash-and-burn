@@ -47,7 +47,7 @@ spec:
       #     subPath:    ".env.production"
       containers:
       - name:         mastodon-web
-        image:        olafradicke/mastodon-web:4.2.8.1
+        image:        olafradicke/mastodon-web:4.2.8.2
         securityContext:
           runAsUser: 1000
           allowPrivilegeEscalation: false
