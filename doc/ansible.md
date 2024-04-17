@@ -35,6 +35,18 @@ TROUBLESHOOTING
 But for troubleshooting you can also run it local on your side. To do this,
 you must be able to establish a working ssh connection to the VM
 
+### REQUIREMENTS
+
+- Ansible
+- Ansible-Galaxy
+
+Run after Ansible install:
+
+```bash
+$ ansible-galaxy install -r ansible/requirements.yml
+```
+
+### RUN
 
 For a dry run with debug output enter:
 

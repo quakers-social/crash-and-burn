@@ -24,7 +24,7 @@
         accessModes:
           -                   ReadWriteMany
           # -                   ReadWriteOnce
-        persistentVolumeReclaimPolicy: Retain
+        # persistentVolumeReclaimPolicy: Retain
         local:
           path:               "/srv/persistent-volume-{{ item }}"
         nodeAffinity:
