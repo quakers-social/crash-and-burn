@@ -23,4 +23,5 @@ ls -lah /home/mastodon/.rbenv/live/public/assets/
 
 # rails assets:precompile || true # Dockerfile
 bundle exec rails db:setup || true # one time
+bundle exec rake db:migrate || true
 /home/mastodon/.rbenv/live/bin/bundle exec puma -C config/puma.rb
