@@ -8,6 +8,7 @@ BUILD
 ```bash
 podman build \
 	--build-arg M_VERSION=v4.2.8 \
+	--ulimit nofile=10240:10240 \
 	-t quakers-social/mastodon-web:latest .
 ```
 
@@ -16,6 +17,7 @@ or without cache
 ```bash
 podman build \
 	--build-arg M_VERSION=v4.2.8 \
+	--ulimit nofile=10240:10240 \
 	--no-cache=true \
     -t quakers-social/mastodon-web:latest .
 ```
@@ -41,7 +43,7 @@ IMAGE PUSH BY HAND
 
 ```bash
 podman login docker.io
-LATES_VERSION=4.2.8.6
+LATES_VERSION=4.2.8.8
 DOCKER_ACCOUNT=olafradicke
 podman tag  quakers-social/mastodon-web:latest  ${DOCKER_ACCOUNT}/mastodon-web:${LATES_VERSION}
 podman push ${DOCKER_ACCOUNT}/mastodon-web:${LATES_VERSION}

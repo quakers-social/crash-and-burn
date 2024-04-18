@@ -15,7 +15,7 @@ spec:
     runAsUser: 1000
     runAsGroup: 1000
     fsGroup: 1000
-    fsGroupChangePolicy: "OnRootMismatch"
+    fsGroupChangePolicy: "Always"
   template:
     metadata:
       labels:
@@ -47,7 +47,7 @@ spec:
       #     subPath:    ".env.production"
       containers:
       - name:         mastodon-web
-        image:        olafradicke/mastodon-web:4.2.8.6
+        image:        olafradicke/mastodon-web:4.2.8.8
         securityContext:
           runAsUser: 1000
           allowPrivilegeEscalation: false
