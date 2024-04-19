@@ -1,0 +1,66 @@
+---
+
+
+# - name: create ArgoCD namespace
+#   kubernetes.core.k8s:
+#     kubeconfig:         "{{ global_kubeconfig }}"
+#     name:               "{{ argocd_namespace }}-operator"
+#     api_version:        v1
+#     kind:               Namespace
+#     state:              present
+#     wait:               yes
+
+
+# - name: add projekt for operator-app
+#   kubernetes.core.k8s:
+#     kubeconfig:         "{{ global_kubeconfig }}"
+#     state:              "{{ argocd_aoa_state }}"
+#     namespace:          "argocd"
+#     definition:
+#       apiVersion:       argoproj.io/v1alpha1
+#       kind:             AppProject
+#       metadata:
+#         name:           operator-app
+#         namespace:      "argocd"
+#         finalizers:
+#                         - resources-finalizer.argocd.argoproj.io
+#       spec:
+#         description:    project of apps of apps from plain yaml
+#         sourceRepos:
+#                         - '*'
+#         clusterResourceWhitelist:
+#         - group:        ''
+#           kind:         Namespace
+
+# - name: application for operator-app
+#   kubernetes.core.k8s:
+#     kubeconfig:         "{{ global_kubeconfig }}"
+#     state:              "{{ argocd_aoa_state }}"
+#     namespace:          "argocd"
+#     definition:
+#       apiVersion:       argoproj.io/v1alpha1
+#       kind:             Application
+#       metadata:
+#         name:           operator-app-test-app
+#         namespace:      "argocd"
+#         finalizers:
+#                         - resources-finalizer.argocd.argoproj.io
+#       spec:
+#         project:        default
+#         syncPolicy:
+#           automated:
+#             prune:      true
+#           syncOptions:
+#                         - PruneLast=true
+#                         - Replace=true
+#                         - CreateNamespace=true
+#         source:
+#           repoURL:      https://github.com/quakers-social/crash-and-burn.git
+#           targetRevision: "{{ argocd_aoa_gitbranch }}"
+#           path:         "{{ argocd_aoa_gitpath }}"
+#           directory:
+#             recurse:    true
+#         destination:
+#           server:       https://kubernetes.default.svc
+#           namespace:    argocd
+

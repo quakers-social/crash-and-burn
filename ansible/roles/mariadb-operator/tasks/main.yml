@@ -1,0 +1,62 @@
+---
+
+# - name: Download repo cert
+#   ansible.builtin.shell:                  |
+#                           curl https://baltocdn.com/helm/signing.asc \
+#                           | gpg --dearmor \
+#                           | tee /usr/share/keyrings/helm.gpg > /dev/null
+#   args:
+#     creates :             /usr/share/keyrings/helm.gpg
+#   register:               results
+
+# - debug:
+#     msg:                  "Retourn: {{ results }}"
+#   when:                   results is defined
+
+# - name: Add repo for helm package
+#   ansible.builtin.apt_repository:
+#     repo:                 "deb  [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg]  https://baltocdn.com/helm/stable/debian/ all main"
+#     state:                present
+#     filename:             helm
+
+# - name: Install helm
+#   ansible.builtin.apt:
+#     update_cache:         yes
+#     pkg:
+#     -                     helm
+
+- name: create mariadb-operator namespace
+  kubernetes.core.k8s:
+    kubeconfig:           "{{ global_kubeconfig }}"
+    name:                 "mariadb-operator"
+    api_version:          v1
+    kind:                 Namespace
+    state:                present
+    wait:                 yes
+
+- name: Deploy MariaDB Opeator
+  kubernetes.core.helm:
+    kubeconfig:           "{{ global_kubeconfig }}"
+    wait:                 "yes"
+    name:                 mariadb-operator
+    chart_repo_url :      https://mariadb-operator.github.io/mariadb-operator
+    chart_version:        0.27.0
+    chart_ref:            mariadb-operator
+    release_namespace:    mariadb-operator
+
+# apiVersion:         argoproj.io/v1alpha1
+# kind:               Application
+# metadata:
+#   name:             mariadb-operator
+#   namespace:        argocd
+# spec:
+#   project:          mariadb-operator
+#   source:
+#     chart:          mariadb-operator
+#     repoURL:        https://mariadb-operator.github.io/mariadb-operator
+#     targetRevision: 0.27.0
+#     helm:
+#       releaseName:  sealed-secrets
+#   destination:
+#     server:         https://kubernetes.default.svc
+#     namespace:      argocd
