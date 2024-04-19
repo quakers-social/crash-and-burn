@@ -1,0 +1,32 @@
+# ---
+
+# kind:               PersistentVolume
+# apiVersion:         v1
+# metadata:
+#   name:             friendica-01
+#   labels:
+#     type:           local
+# spec:
+#   storageClassName: local-friendica-01
+#   capacity:
+#     storage:        10Gi
+#   accessModes:
+#     -               ReadWriteMany
+#   hostPath:
+#     path:           "/srv/friendica-volume-01"
+
+
+---
+
+apiVersion:         v1
+kind:               PersistentVolumeClaim
+metadata:
+  name:             friendica-system
+spec:
+  storageClassName: local-friendica-01
+  accessModes:
+    -               ReadWriteMany
+  resources:
+    requests:
+      storage:      10Gi
+
