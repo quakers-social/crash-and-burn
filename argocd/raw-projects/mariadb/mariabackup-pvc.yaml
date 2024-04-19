@@ -1,8 +1,12 @@
+---
+
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mariabackup
 spec:
+  storageClassName: local-local-friendica-01
   accessModes:
   - ReadWriteOnce
   resources:
