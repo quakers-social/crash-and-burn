@@ -43,6 +43,10 @@
     chart_version:        0.27.0
     chart_ref:            mariadb-operator
     release_namespace:    mariadb-operator
+    values:
+      logLevel: INFO
+      ha:
+        enabled: true
 
 # apiVersion:         argoproj.io/v1alpha1
 # kind:               Application
