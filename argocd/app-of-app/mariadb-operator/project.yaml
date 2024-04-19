@@ -13,5 +13,5 @@ spec:
   sourceRepos:
   -             '*'
   destinations:
-  - namespace:  'argocd-aoa'
+  - namespace:  'argocd'
     server:     '*'
