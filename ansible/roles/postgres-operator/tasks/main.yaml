@@ -1,6 +1,6 @@
 ---
 
-- name: create ArgoCD namespace
+- name: create postgres-operator namespace
   kubernetes.core.k8s:
     kubeconfig:         "{{ global_kubeconfig }}"
     name:               "postgres-operator"
