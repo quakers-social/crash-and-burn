@@ -11,5 +11,6 @@
     -           persistent-volumes
     -           argocd
     -           postgres-operator
+    -           mariadb-operator
     -           secret-postgres-closter
 

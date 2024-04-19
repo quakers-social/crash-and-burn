@@ -15,3 +15,18 @@
 #   destination:
 #     server:         https://kubernetes.default.svc
 #     namespace:      argocd
+
+apiVersion:         argoproj.io/v1alpha1
+kind:               Application
+metadata:
+  name:             mariadb
+  namespace:        argocd
+spec:
+  project:          mariadb
+  source:
+    repoURL:        https://github.com/quakers-social/crash-and-burn.git
+    targetRevision: HEAD
+    path:           argocd/raw-projects/mariadb
+  destination:
+    server:         https://kubernetes.default.svc
+    namespace:      argocd
