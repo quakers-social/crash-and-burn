@@ -46,15 +46,6 @@ spec:
       containers:
       - name:             friendica-cron
         image:            friendica:2024.03-fpm-alpine
-        # securityContext:
-        #   runAsUser:      1000
-        #   allowPrivilegeEscalation: false
-        # livenessProbe:
-        #   httpGet:
-        #     path:         /health
-        #     port:         3000
-        #   initialDelaySeconds: 15
-        #   periodSeconds:  10
         readinessProbe:
           tcpSocket:
             port:         9000
