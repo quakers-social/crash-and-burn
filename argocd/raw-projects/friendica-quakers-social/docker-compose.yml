@@ -11,34 +11,9 @@
 #     env_file:
 #       - db.env
 
-#   app:
-#     build: ./app
-#     restart: always
-#     volumes:
-#       - friendica:/var/www/html
-#     environment:
-#       - FRIENDICA_ADMIN_MAIL=
-#       - FRIENDICA_TZ=
-#       - FRIENDICA_LANG=
-#       - FRIENDICA_URL=
-#       - FRIENDICA_SITENAME=
-#       - SMTP=
-#     env_file:
-#       - db.env
-#     depends_on:
-#       - db
 
-#   cron:
-#     build: ./app
-#     restart: always
-#     volumes:
-#       - friendica:/var/www/html
-#     entrypoint: /cron.sh
-#     env_file:
-#       - db.env
-#     depends_on:
-#       - db
-#       - app
+
+
 
 #   web:
 #     image: nginx

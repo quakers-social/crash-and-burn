@@ -1,38 +1,38 @@
 apiVersion: k8s.mariadb.com/v1alpha1
-kind: MariaDB
+kind:               MariaDB
 metadata:
-  name: mariadb
+  name:             friendica
 spec:
   rootPasswordSecretKeyRef:
-    name: mariadb
-    key: root-password
+    name:           mariadb-passwords
+    key:            root-password
 
-  username: mariadb
+  username:         friendica
   passwordSecretKeyRef:
-    name: mariadb
-    key: password
-  database: mariadb
+    name:           mariadb-passwords
+    key:            user-password
+  database:         friendica
 
-  image: mariadb:10.11.7
-  imagePullPolicy: IfNotPresent
+  image:            mariadb:10.11.7
+  imagePullPolicy:  IfNotPresent
 
-  port: 3306
+  port:             3306
 
   storage:
-    size: 1Gi
+    size:           1Gi
 
   service:
-    type: LoadBalancer
+    type:           LoadBalancer
     annotations:
       metallb.universe.tf/loadBalancerIPs: 172.18.0.20
 
   myCnf: |
-    [mariadb]
-    bind-address=*
-    default_storage_engine=InnoDB
-    binlog_format=row
-    innodb_autoinc_lock_mode=2
-    max_allowed_packet=256M
+                    [mariadb]
+                    bind-address=*
+                    default_storage_engine=InnoDB
+                    binlog_format=row
+                    innodb_autoinc_lock_mode=2
+                    max_allowed_packet=256M
 
   metrics:
     enabled: true
