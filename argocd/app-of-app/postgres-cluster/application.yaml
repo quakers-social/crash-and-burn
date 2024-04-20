@@ -1,14 +1,16 @@
-apiVersion:         argoproj.io/v1alpha1
-kind:               Application
-metadata:
-  name:             mastodon-db
-  namespace:        argocd
-spec:
-  project:          mastodon-db
-  source:
-    repoURL:        https://github.com/quakers-social/crash-and-burn.git
-    targetRevision: HEAD
-    path:           argocd/raw-projects/postgres-cluster
-  destination:
-    server:         https://kubernetes.default.svc
-    namespace:      argocd-aoa
+# ---
+
+# apiVersion:         argoproj.io/v1alpha1
+# kind:               Application
+# metadata:
+#   name:             mastodon-db
+#   namespace:        argocd
+# spec:
+#   project:          mastodon-db
+#   source:
+#     repoURL:        https://github.com/quakers-social/crash-and-burn.git
+#     targetRevision: HEAD
+#     path:           argocd/raw-projects/postgres-cluster
+#   destination:
+#     server:         https://kubernetes.default.svc
+#     namespace:      argocd-aoa
