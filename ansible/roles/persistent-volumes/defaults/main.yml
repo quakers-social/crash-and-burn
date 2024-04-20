@@ -4,4 +4,4 @@ persistent_volumes_state: "present"
 persistent_volumes_pvcs:
   -                       mastodon-01
   -                       mastodon-02
-  -                       local-friendica-01
+  -                       friendica-01
