@@ -105,9 +105,9 @@ spec:
         #   value:          "friendica"
         # - name:           SMTP_AUTH_PASS
         #   value:          "XXXXXXXX"
-        # volumeMounts:
-        # - name:       friendica-system
-        #   mountPath:  /var/www/html
+        volumeMounts:
+        - name:       friendica-system
+          mountPath:  /var/www/html
       volumes:
       - name:         friendica-system
         persistentVolumeClaim:
