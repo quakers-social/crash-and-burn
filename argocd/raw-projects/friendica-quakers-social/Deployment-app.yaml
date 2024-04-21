@@ -40,23 +40,40 @@ spec:
     spec:
       containers:
       - name:             friendica-app
-        image:            friendica:2024.03-fpm-alpine
+        image:            friendica:2024.03-apache
+        # image:            friendica:2024.03-fpm-alpine
         # securityContext:
         #   runAsUser:      1000
         #   allowPrivilegeEscalation: false
         # livenessProbe:
         #   httpGet:
         #     path:         /
-        #     port:         3000
+        #     port:         9000
         #   initialDelaySeconds: 15
         #   periodSeconds:  10
+        # readinessProbe:
+        #   tcpSocket:
+        #     port:         9000
+        #   initialDelaySeconds: 15
+        #   periodSeconds:  10
+        # ports:
+        # - containerPort:  9000
+        # securityContext:
+        #   runAsUser:      1000
+        #   allowPrivilegeEscalation: false
+        livenessProbe:
+          httpGet:
+            path:         /
+            port:         80
+          initialDelaySeconds: 15
+          periodSeconds:  10
         readinessProbe:
           tcpSocket:
-            port:         9000
+            port:         80
           initialDelaySeconds: 15
           periodSeconds:  10
         ports:
-        - containerPort:  9000
+        - containerPort:  80
         resources:
           limits:
             memory:       300Mi
@@ -105,9 +122,9 @@ spec:
           value:          "friendica"
         - name:           SMTP_AUTH_PASS
           value:          "XXXXXXXX"
-        # volumeMounts:
-        # - name:       friendica-system
-        #   mountPath:  /var/www/html
+        volumeMounts:
+        - name:       friendica-system
+          mountPath:  /var/www/html
       volumes:
       - name:         friendica-system
         persistentVolumeClaim:
