@@ -64,50 +64,50 @@ spec:
           requests:
             memory:       100Mi
             cpu:          100m
-        env:
-        - name:           FRIENDICA_URL
-          value:          "friendica.the-independent-friend.de"
-        - name:           FRIENDICA_TZ
-          value:          "Europe/Berlin"
-        - name:           FRIENDICA_SITENAME
-          value:          "friendica.the-independent-friend"
-        - name:           FRIENDICA_NO_VALIDATION
-          value:          "true"
-        - name:           FRIENDICA_DATA_DIR
-          value:          "/var/www/data"
-        - name:           FRIENDICA_UPGRADE
-          value:          "fals"
-        - name:           FRIENDICA_DEBUGGING
-          value:          "true"
-        - name:           FRIENDICA_LOGLEVEL
-          value:          "notice"
-        - name:           FRIENDICA_LOGGER
-          value:          "stream"
-        - name:           MYSQL_USER
-          value:          "stream"
-        - name:           MYSQL_PASSWORD
-          value:          "stream"
-        - name:           MYSQL_DATABASE
-          value:          "stream"
-        - name:           MYSQL_HOST
-          value:          "stream"
-        - name:           MYSQL_PORT
-          value:          "3306"
-        - name:           REDIS_HOST
-          value:          "redis"
-        - name:           PHP_UPLOAD_LIMIT
-          value:          "512M"
-        - name:           SMTP
-          value:          "smtp.mail.nix"
-        - name:           SMTP_DOMAIN
-          value:          "friendica.the-independent-friend.de"
-        - name:           SMTP_AUTH_USER
-          value:          "friendica"
-        - name:           SMTP_AUTH_PASS
-          value:          "XXXXXXXX"
-        volumeMounts:
-        - name:       friendica-system
-          mountPath:  /var/www/html
+        # env:
+        # - name:           FRIENDICA_URL
+        #   value:          "friendica.the-independent-friend.de"
+        # - name:           FRIENDICA_TZ
+        #   value:          "Europe/Berlin"
+        # - name:           FRIENDICA_SITENAME
+        #   value:          "friendica.the-independent-friend"
+        # - name:           FRIENDICA_NO_VALIDATION
+        #   value:          "true"
+        # - name:           FRIENDICA_DATA_DIR
+        #   value:          "/var/www/data"
+        # - name:           FRIENDICA_UPGRADE
+        #   value:          "fals"
+        # - name:           FRIENDICA_DEBUGGING
+        #   value:          "true"
+        # - name:           FRIENDICA_LOGLEVEL
+        #   value:          "notice"
+        # - name:           FRIENDICA_LOGGER
+        #   value:          "stream"
+        # - name:           MYSQL_USER
+        #   value:          "stream"
+        # - name:           MYSQL_PASSWORD
+        #   value:          "stream"
+        # - name:           MYSQL_DATABASE
+        #   value:          "stream"
+        # - name:           MYSQL_HOST
+        #   value:          "stream"
+        # - name:           MYSQL_PORT
+        #   value:          "3306"
+        # - name:           REDIS_HOST
+        #   value:          "redis"
+        # - name:           PHP_UPLOAD_LIMIT
+        #   value:          "512M"
+        # - name:           SMTP
+        #   value:          "smtp.mail.nix"
+        # - name:           SMTP_DOMAIN
+        #   value:          "friendica.the-independent-friend.de"
+        # - name:           SMTP_AUTH_USER
+        #   value:          "friendica"
+        # - name:           SMTP_AUTH_PASS
+        #   value:          "XXXXXXXX"
+        # volumeMounts:
+        # - name:       friendica-system
+        #   mountPath:  /var/www/html
       volumes:
       - name:         friendica-system
         persistentVolumeClaim:
