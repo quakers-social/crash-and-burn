@@ -50,11 +50,11 @@ spec:
         #     port:         3000
         #   initialDelaySeconds: 15
         #   periodSeconds:  10
-        # readinessProbe:
-        #   tcpSocket:
-        #     port:         9000
-        #   initialDelaySeconds: 15
-        #   periodSeconds:  10
+        readinessProbe:
+          tcpSocket:
+            port:         9000
+          initialDelaySeconds: 15
+          periodSeconds:  10
         ports:
         - containerPort:  9000
         resources:
