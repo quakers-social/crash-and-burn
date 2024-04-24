@@ -45,7 +45,8 @@ spec:
     spec:
       containers:
       - name:             friendica-cron
-        image:            friendica:2024.03-fpm-alpine
+        image:            friendica:2024.03-apache
+        # image:            friendica:2024.03-fpm-alpine
         readinessProbe:
           tcpSocket:
             port:         9000
