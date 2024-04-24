@@ -1,40 +1,44 @@
 ---
 
 
+- name:                   Create local directories
+  ansible.builtin.file:
+    path:                 "/srv/persistent-volume-{{ item }}"
+    state:                directory
+  loop:                   "{{ persistent_volumes_pvcs }}"
 
-
-- name:                       create pv
+- name:                   create pv
   kubernetes.core.k8s:
-    kubeconfig:               "{{ k3s_kubeconfig }}"
-    state:                    "{{ persistent_volumes_state }}"
-    wait:                     "yes"
+    kubeconfig:           "{{ k3s_kubeconfig }}"
+    state:                "{{ persistent_volumes_state }}"
+    wait:                 "yes"
     definition:
-      kind:                   PersistentVolume
-      apiVersion:             v1
+      kind:               PersistentVolume
+      apiVersion:         v1
       metadata:
-        name:                 "local-{{ item }}"
+        name:             "local-{{ item }}"
         labels:
-          type:               local
+          type:           local
         annotations:
           storageclass.kubernetes.io/is-default-class: "false"
       spec:
-        storageClassName:     "local-{{ item }}"
+        storageClassName: "local-{{ item }}"
         capacity:
-          storage:            20Gi
+          storage:        20Gi
         accessModes:
-          -                   ReadWriteMany
+          -               ReadWriteMany
           # -                   ReadWriteOnce
         # persistentVolumeReclaimPolicy: Retain
         local:
-          path:               "/srv/persistent-volume-{{ item }}"
+          path:           "/srv/persistent-volume-{{ item }}"
         nodeAffinity:
           required:
             nodeSelectorTerms:
             - matchExpressions:
-              - key:          kubernetes.io/hostname
-                operator:     In
+              - key:      kubernetes.io/hostname
+                operator: In
                 values:
-                -             ubuntu-4gb-hel1-3
+                -         ubuntu-4gb-hel1-3
         # hostPath:
         #   path:           "/srv/persistent-volume-{{ item }}"
   loop:                   "{{ persistent_volumes_pvcs }}"

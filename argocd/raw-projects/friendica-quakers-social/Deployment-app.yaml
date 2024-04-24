@@ -28,6 +28,7 @@ spec:
   selector:
     matchLabels:
       app:                friendica-app
+      app.kubernetes.io/name: friendica-app
   # securityContext:
   #   runAsUser:            1000
   #   runAsGroup:           1000
@@ -73,7 +74,8 @@ spec:
           initialDelaySeconds: 15
           periodSeconds:  10
         ports:
-        - containerPort:  80
+        - name: http-web
+          containerPort:  80
         resources:
           limits:
             memory:       300Mi
