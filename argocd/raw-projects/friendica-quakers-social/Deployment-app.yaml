@@ -38,6 +38,7 @@ spec:
     metadata:
       labels:
         app:              friendica-app
+        app.kubernetes.io/name: friendica-app
     spec:
       containers:
       - name:             friendica-app
