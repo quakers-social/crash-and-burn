@@ -9,6 +9,18 @@ BASICS
 * **FQDN:** friendica.the-independent-friend.de
 * **IP:** 2a01:4f9:c010:8e06::1
 
+DATABSE / MARIADB
+-----------------
+
+* **URL:** mariadb.argocd.svc
+
+
+PORT FORWART
+------------
+
+```bash
+$ kubectl port-forward service/friendica-app -n argocd-aoa 8081:8080
+```
 
 
 LINKS

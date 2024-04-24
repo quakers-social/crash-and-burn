@@ -30,7 +30,7 @@ IMAGE PUSH BY HAND
 
 ```bash
 podman login docker.io
-LATES_VERSION=0.0.1
+LATES_VERSION=0.0.2
 DOCKER_ACCOUNT=olafradicke
 podman tag  quakers-social/debugging:latest  ${DOCKER_ACCOUNT}/debugging:${LATES_VERSION}
 podman push ${DOCKER_ACCOUNT}/debugging:${LATES_VERSION}

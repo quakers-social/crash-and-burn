@@ -22,9 +22,7 @@ spec:
     size:           1Gi
 
   service:
-    type:           LoadBalancer
-    annotations:
-      metallb.universe.tf/loadBalancerIPs: 172.18.0.20
+    type:           ClusterIP
 
   myCnf: |
                     [mariadb]

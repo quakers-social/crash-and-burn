@@ -5,6 +5,7 @@ RUN dnf install -y \
 	telnet \
 	traceroute \
 	postgresql \
+	mariadb \
 	emacs-nox \
 	bash \
 	procps-ng

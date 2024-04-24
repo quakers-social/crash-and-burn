@@ -92,9 +92,9 @@ spec:
         - name:           MYSQL_PASSWORD
           value:          "stream"
         - name:           MYSQL_DATABASE
-          value:          "stream"
+          value:          "friendica"
         - name:           MYSQL_HOST
-          value:          "stream"
+          value:          "mariadb.argocd.svc"
         - name:           MYSQL_PORT
           value:          "3306"
         - name:           REDIS_HOST
