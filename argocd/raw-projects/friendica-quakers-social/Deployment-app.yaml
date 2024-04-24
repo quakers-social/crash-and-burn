@@ -49,37 +49,21 @@ spec:
         # livenessProbe:
         #   httpGet:
         #     path:         /
-        #     port:         9000
+        #     port:         80
         #   initialDelaySeconds: 15
         #   periodSeconds:  10
         # readinessProbe:
         #   tcpSocket:
-        #     port:         9000
+        #     port:         80
         #   initialDelaySeconds: 15
         #   periodSeconds:  10
-        # ports:
-        # - containerPort:  9000
-        # securityContext:
-        #   runAsUser:      1000
-        #   allowPrivilegeEscalation: false
-        livenessProbe:
-          httpGet:
-            path:         /
-            port:         80
-          initialDelaySeconds: 15
-          periodSeconds:  10
-        readinessProbe:
-          tcpSocket:
-            port:         80
-          initialDelaySeconds: 15
-          periodSeconds:  10
         ports:
         - name: http-web
           containerPort:  80
         resources:
           limits:
             memory:       300Mi
-            cpu:          1
+            cpu:          0.5
           requests:
             memory:       100Mi
             cpu:          100m
