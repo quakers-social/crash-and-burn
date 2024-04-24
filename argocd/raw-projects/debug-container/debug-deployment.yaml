@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name:             debugging-host
-          image:            olafradicke/debugging:0.0.1
+          image:            olafradicke/debugging:0.0.2
           imagePullPolicy:  "IfNotPresent"
           resources:
             requests:
