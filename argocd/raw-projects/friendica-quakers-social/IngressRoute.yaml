@@ -1,0 +1,46 @@
+---
+
+apiVersion:               traefik.containo.us/v1alpha1
+kind:                     IngressRoute
+metadata:
+  name:                   friendica-the-independent-friend-de-ingressroute
+spec:
+  entryPoints:
+                          - web
+                          - websecure
+  routes:
+    - match:              Host(`friendica.the-independent-friend.de`) && PathPrefix(`/`)
+      kind:               Rule
+      services:
+        - name:           friendica-app
+          port:           80*0
+      middlewares:
+        - name:           friendica-the-independent-friend-de
+  tls:
+    secretName:           friendica-the-independent-friend-de
+
+---
+
+apiVersion:               traefik.containo.us/v1alpha1
+kind:                     Middleware
+metadata:
+  name:                   friendica-the-independent-friend-de
+spec:
+  redirectScheme:
+    scheme:               https
+    permanent:            true
+
+---
+
+apiVersion:               cert-manager.io/v1
+kind:                     Certificate
+metadata:
+  name:                   friendica-the-independent-friend-de
+spec:
+  dnsNames:
+                          - friendica.the-independent-friend.de
+  secretName:             friendica-the-independent-friend-de
+  issuerRef:
+    name:                 letsencrypt-staging
+    # name:                 letsencrypt-production
+    kind:                 ClusterIssuer
