@@ -13,7 +13,7 @@ spec:
       kind:               Rule
       services:
         - name:           friendica-app
-          port:           80*0
+          port:           8080
       middlewares:
         - name:           friendica-the-independent-friend-de
   tls:
