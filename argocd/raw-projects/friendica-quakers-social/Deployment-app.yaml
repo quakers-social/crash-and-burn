@@ -94,7 +94,8 @@ spec:
         - name:           MYSQL_DATABASE
           value:          "friendica"
         - name:           MYSQL_HOST
-          value:          "friendica-db.argocd-aoa.svc"
+          value:          "mariadb.argocd.svc"
+          # value:          "friendica-db.argocd-aoa.svc"
         - name:           MYSQL_PORT
           value:          "3306"
         - name:           REDIS_HOST
