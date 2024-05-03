@@ -90,7 +90,7 @@ spec:
         - name:           MYSQL_USER
           value:          "friendica"
         - name:           MYSQL_PASSWORD
-          value:          "stream"
+          value:          "MariaDB11!"
         - name:           MYSQL_DATABASE
           value:          "friendica"
         - name:           MYSQL_HOST
