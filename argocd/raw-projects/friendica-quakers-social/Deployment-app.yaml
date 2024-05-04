@@ -83,10 +83,10 @@ spec:
           value:          "fals"
         - name:           FRIENDICA_DEBUGGING
           value:          "true"
-        - name:           FRIENDICA_LOGLEVEL
-          value:          "notice"
-        - name:           FRIENDICA_LOGGER
-          value:          "stream"
+        # - name:           FRIENDICA_LOGLEVEL
+        #   value:          "notice"
+        # - name:           FRIENDICA_LOGGER
+        #   value:          "stream"
         - name:           MYSQL_USER
           value:          "friendica"
         - name:           MYSQL_PASSWORD

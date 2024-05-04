@@ -6,7 +6,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mariabackup
 spec:
-  storageClassName: local-local-friendica-01
+  storageClassName: local-friendica-01
   accessModes:
   - ReadWriteOnce
   resources:

@@ -28,7 +28,7 @@
         accessModes:
           -               ReadWriteMany
           # -                   ReadWriteOnce
-        # persistentVolumeReclaimPolicy: Retain
+        persistentVolumeReclaimPolicy: Retain
         local:
           path:           "/srv/persistent-volume-{{ item }}"
         nodeAffinity:
@@ -39,8 +39,6 @@
                 operator: In
                 values:
                 -         ubuntu-4gb-hel1-3
-        # hostPath:
-        #   path:           "/srv/persistent-volume-{{ item }}"
   loop:                   "{{ persistent_volumes_pvcs }}"
 
 - name:                   set WaitForFirstConsumer
