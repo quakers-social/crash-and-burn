@@ -42,7 +42,8 @@ spec:
     spec:
       containers:
       - name:             friendica-app
-        image:            friendica:2024.03-apache
+        image:            friendica:2024.06-dev-apache
+        # image:            friendica:2024.03-apache
         # image:            friendica:2024.03-fpm-alpine
         # securityContext:
         #   runAsUser:      1000
