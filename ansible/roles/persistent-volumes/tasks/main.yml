@@ -7,7 +7,7 @@
     state:                directory
   loop:                   "{{ persistent_volumes_pvcs }}"
 
-- name:                   create pv
+- name:                   Create PVs
   kubernetes.core.k8s:
     kubeconfig:           "{{ k3s_kubeconfig }}"
     state:                "{{ persistent_volumes_state }}"
@@ -41,7 +41,19 @@
                 -         ubuntu-4gb-hel1-3
   loop:                   "{{ persistent_volumes_pvcs }}"
 
-- name:                   set WaitForFirstConsumer
+- name:                   Create StorageClass
+  kubernetes.core.k8s:
+    kubeconfig:           "{{ k3s_kubeconfig }}"
+    state:                absent
+    wait:                 "yes"
+    definition:
+      apiVersion:         storage.k8s.io/v1
+      kind:               StorageClass
+      metadata:
+        name:             "local-{{ item }}"
+  loop:                   "{{ persistent_volumes_pvcs }}"
+
+- name:                   Create StorageClass
   kubernetes.core.k8s:
     kubeconfig:           "{{ k3s_kubeconfig }}"
     state:                "{{ persistent_volumes_state }}"
@@ -52,5 +64,5 @@
       metadata:
         name:             "local-{{ item }}"
       provisioner:        kubernetes.io/no-provisioner
-      volumeBindingMode:  WaitForFirstConsumer
+      volumeBindingMode:  Immediate
   loop:                   "{{ persistent_volumes_pvcs }}"
