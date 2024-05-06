@@ -23,7 +23,7 @@ spec:
             user: example-misskey-user
             pass: example-misskey-pass
           redis:
-            host: '{{ .Release.Name }}-redis-master'
+            host: 'misskey-quakers-social-redis-master'
             port: 6379
             prefix: misskey
             db: 1
