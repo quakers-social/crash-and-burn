@@ -17,7 +17,7 @@ spec:
           url: https://friendica.the-independent-friend.de
           port: 3000
           db:
-            host: '{{ .Release.Name }}-postgresql'
+            host: 'misskey-quakers-social-postgresql'
             port: 5432
             db: misskey
             user: example-misskey-user
@@ -47,7 +47,7 @@ spec:
         #    For more options see [postgresql chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/postgresql)
         # @default -- See values.yaml
         postgresql:
-          enabled: false
+          enabled: true
           postgresqlUsername: example-misskey-user
           postgresqlPassword: example-misskey-pass
           postgresqlDatabase: misskey
