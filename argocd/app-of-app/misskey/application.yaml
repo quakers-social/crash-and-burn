@@ -1,0 +1,65 @@
+---
+
+apiVersion:         argoproj.io/v1alpha1
+kind:               Application
+metadata:
+  name:             misskey-quakers-social
+  namespace:        argocd
+spec:
+  project:          misskey-quakers-social
+  source:
+    chart:          misskey
+    repoURL:        https://alyti.github.io/charts/
+    targetRevision: 1.0.0
+    helm:
+      valuesObject:
+        config:
+          url: https://friendica.the-independent-friend.de
+          port: 3000
+          db:
+            host: '{{ .Release.Name }}-postgresql'
+            port: 5432
+            db: misskey
+            user: example-misskey-user
+            pass: example-misskey-pass
+          redis:
+            host: '{{ .Release.Name }}-redis-master'
+            port: 6379
+            prefix: misskey
+            db: 1
+          id: 'aid'
+          maxFileSize: 262144000
+        service:
+          main:
+            ports:
+              http:
+                port: 3000
+        ingress:
+          main:
+            enabled: false
+        # -- Configure persistence settings for the chart under this key.
+        # @default -- See values.yaml
+        persistence:
+          files:
+            enabled: false
+            mountPath: /misskey/files
+        # -- Enable and configure postgresql database subchart under this key.
+        #    For more options see [postgresql chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/postgresql)
+        # @default -- See values.yaml
+        postgresql:
+          enabled: false
+          postgresqlUsername: example-misskey-user
+          postgresqlPassword: example-misskey-pass
+          postgresqlDatabase: misskey
+          persistence:
+            enabled: false
+        redis:
+          enabled: false
+          auth:
+            enabled: false
+        elasticsearch:
+          enabled: false
+
+  destination:
+    server:         https://kubernetes.default.svc
+    namespace:      argocd-aoa
