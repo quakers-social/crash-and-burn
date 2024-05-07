@@ -25,7 +25,7 @@ spec:
             port: 5432
             db: misskey
             user: misskey
-            pass: QzdxczV9MV5zKWVNZk5DO0I7TUA7YmF0
+            pass: 'C7qs5}1^s)eMfNC;B;M@;bat'
           redis:
             host: 'misskey-quakers-social-redis-master'
             port: 6379
