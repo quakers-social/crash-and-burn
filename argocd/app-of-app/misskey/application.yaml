@@ -15,7 +15,7 @@ spec:
       valuesObject:
         image:
           repository: misskey/misskey
-          tag: 2024.3
+          tag: '2024.3'
           # tag: 12.110.1
         config:
           url: https://scial.the-independent-friend.de
