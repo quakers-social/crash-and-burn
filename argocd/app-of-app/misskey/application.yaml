@@ -14,14 +14,14 @@ spec:
     helm:
       valuesObject:
         config:
-          url: https://friendica.the-independent-friend.de
+          url: https://scial.the-independent-friend.de
           port: 3000
           db:
-            host: 'misskey-quakers-social-postgresql'
+            host: 'misskey-db-01-primary.argocd-aoa.svc'
             port: 5432
             db: misskey
-            user: example-misskey-user
-            pass: example-misskey-pass
+            user: misskey
+            pass: misskey
           redis:
             host: 'misskey-quakers-social-redis-master'
             port: 6379
@@ -47,12 +47,12 @@ spec:
         #    For more options see [postgresql chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/postgresql)
         # @default -- See values.yaml
         postgresql:
-          enabled: true
-          postgresqlUsername: example-misskey-user
-          postgresqlPassword: example-misskey-pass
-          postgresqlDatabase: misskey
-          persistence:
-            enabled: false
+          enabled: false
+          # postgresqlUsername: example-misskey-user
+          # postgresqlPassword: example-misskey-pass
+          # postgresqlDatabase: misskey
+          # persistence:
+          #   enabled: false
         redis:
           enabled: true
           auth:
