@@ -3,13 +3,13 @@
 apiVersion:     argoproj.io/v1alpha1
 kind:           AppProject
 metadata:
-  name:         mastodon-db
+  name:         postgres-cluster
   namespace:    argocd
   # Finalizer that ensures that project is not deleted until it is not referenced by any application
   finalizers:
     -           resources-finalizer.argocd.argoproj.io
 spec:
-  description:  Postgres cluster for Mastodon
+  description:  Postgres cluster
   sourceRepos:
   -             '*'
   destinations:

@@ -3,10 +3,10 @@
 apiVersion:         argoproj.io/v1alpha1
 kind:               Application
 metadata:
-  name:             mastodon-db
+  name:             postgres-cluster
   namespace:        argocd
 spec:
-  project:          mastodon-db
+  project:          postgres-cluster
   source:
     repoURL:        https://github.com/quakers-social/crash-and-burn.git
     targetRevision: HEAD
