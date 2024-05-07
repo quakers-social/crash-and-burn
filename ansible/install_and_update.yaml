@@ -12,5 +12,5 @@
     -           argocd
     -           postgres-operator
     -           mariadb-operator
-    # -           secret-postgres-closter
+    -           secret-postgres-closter
 

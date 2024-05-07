@@ -29,6 +29,12 @@ spec:
       databases:
         - misskey
       options: "SUPERUSER"
+  patroni:
+    dynamicConfiguration:
+      postgresql:
+        pg_hba:
+          - "host all all 0.0.0.0/0 md5" # this line enabled logical replication with programmatic access
+          - "host all postgres 127.0.0.1/32 md5"
   backups:
     pgbackrest:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.49-0
