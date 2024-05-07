@@ -12,7 +12,11 @@ LINKS
 
 
 - [docs](https://misskey-hub.net/en/docs/)
-  - [Origen projekt misskey (Helm Chart)](https://github.com/misskey-dev/misskey)
+- Github
   - [openhub.net misskey](https://openhub.net/p/misskey)
-  - [Helm Chart](https://artifacthub.io/packages/helm/alyti/misskey)
+  - [Origen projekt misskey (Helm Chart)](https://github.com/misskey-dev/misskey)
+  - [Docker image code](https://github.com/misskey-dev/misskey/blob/develop/Dockerfile)
   - [Helm Chart Code](https://github.com/alyti/charts/blob/main/charts/misskey/values.yaml)
+- Artifacts
+  - [Docker image](https://hub.docker.com/r/misskey/misskey/tags)
+  - [Helm Chart](https://artifacthub.io/packages/helm/alyti/misskey)
