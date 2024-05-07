@@ -36,6 +36,7 @@
 
 - name: Deploy MariaDB Opeator
   kubernetes.core.helm:
+    state:                "{{ mariadb_operator_state }}"
     kubeconfig:           "{{ global_kubeconfig }}"
     wait:                 "yes"
     name:                 mariadb-operator

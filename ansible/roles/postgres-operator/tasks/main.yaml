@@ -8,18 +8,31 @@
     kind:               Namespace
     state:              present
     wait:               yes
+  when:                 postgres_operator_state == "present"
 
 - name: git checkout from gostgres operator
   ansible.builtin.git:
     repo:               "{{ postgres_operator_git_url }}"
     dest:               "/tmp/postgres-operator"
     depth:              1
+  when:                 postgres_operator_state == "present"
 
 - name: Install Postgres operatot with yaml file
   ansible.builtin.shell: kubectl apply --server-side -k ./default/ -n postgres-operator
   args:
     chdir:              /tmp/postgres-operator/kustomize/install
   register:             k3s_return
+  when:                 postgres_operator_state == "present"
+
+- debug:
+    msg:                "{{ k3s_return }}"
+
+- name: Uninstall Postgres operatot with yaml file
+  ansible.builtin.shell: kubectl delete --server-side -k ./default/ -n postgres-operator
+  args:
+    chdir:              /tmp/postgres-operator/kustomize/install
+  register:             k3s_return
+  when:                 postgres_operator_state == "absent"
 
 - debug:
     msg:                "{{ k3s_return }}"

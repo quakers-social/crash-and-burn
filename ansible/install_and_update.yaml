@@ -10,7 +10,7 @@
     -           k3s_cert_manager
     -           persistent-volumes
     -           argocd
-    # -           postgres-operator
+    -           postgres-operator
     -           mariadb-operator
     # -           secret-postgres-closter
 

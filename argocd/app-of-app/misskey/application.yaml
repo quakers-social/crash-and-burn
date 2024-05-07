@@ -21,11 +21,11 @@ spec:
           url: https://scial.the-independent-friend.de
           port: 3000
           db:
-            host: 'misskey-db-01-primary.argocd-aoa.svc'
+            host: 'misskey-db-primary.argocd-aoa.svc'
             port: 5432
             db: misskey
             user: misskey
-            pass: misskey
+            pass: QzdxczV9MV5zKWVNZk5DO0I7TUA7YmF0
           redis:
             host: 'misskey-quakers-social-redis-master'
             port: 6379

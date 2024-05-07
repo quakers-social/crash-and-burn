@@ -25,3 +25,19 @@ k3s_install_with_pull_secret:     false
 # ---- letsencrypt ----
 
 k3s_cert_manager_mail:            "breiefkasten@olaf-radicke.de"
+
+# ----- MariaDB operator ----
+
+mariadb_operator_state:  "absent"
+
+# ----- Postgres operator -----
+
+postgres_operator_state: "present"
+
+# ------ PVCs ----------------
+
+persistent_volumes_state: "present"
+persistent_volumes_pvcs:
+  -                       mastodon-01
+  -                       mastodon-02
+  -                       friendica-01
