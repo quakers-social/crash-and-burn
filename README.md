@@ -1,9 +1,8 @@
 CRASH N' BURN
 =============
 
-![example workflow](https://github.com/quakers-social/crash-and-burn/actions/workflows/setup_vm.yaml/badge.svg)
-![example workflow](https://github.com/quakers-social/crash-and-burn/actions/workflows/setup_kubernetes.yaml/badge.svg)
-![example workflow](https://github.com/quakers-social/crash-and-burn/actions/workflows/image_build.yaml/badge.svg)
+![VM setup](https://github.com/quakers-social/crash-and-burn/actions/workflows/setup_vm.yaml/badge.svg)
+![Image build](https://github.com/quakers-social/crash-and-burn/actions/workflows/image_build.yaml/badge.svg)
 
 
 MISSION
