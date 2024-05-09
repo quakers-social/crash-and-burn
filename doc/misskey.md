@@ -6,6 +6,14 @@ URL
 
 `scial.the-independent-friend.de`
 
+PORT FORWART
+------------
+
+
+```bash
+kubectl port-forward service/misskey-quakers-social -n argocd-aoa 3000:3000
+```
+
 
 LINKS
 -----
