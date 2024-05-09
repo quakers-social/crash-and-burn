@@ -1,0 +1,46 @@
+---
+
+apiVersion:               traefik.containo.us/v1alpha1
+kind:                     IngressRoute
+metadata:
+  name:                   scial-the-independent-friend-de
+spec:
+  entryPoints:
+                          - web
+                          - websecure
+  routes:
+    - match:              Host(`scial.the-independent-friend.de`) && PathPrefix(`/`)
+      kind:               Rule
+      services:
+        - name:           misskey-quakers-social
+          port:           80
+      middlewares:
+        - name:           redirect-https-pulumi
+  tls:
+    secretName:           scial-the-independent-friend-de
+
+---
+
+apiVersion:               traefik.containo.us/v1alpha1
+kind:                     Middleware
+metadata:
+  name:                   scial-the-independent-friend-de
+spec:
+  redirectScheme:
+    scheme:               https
+    permanent:            true
+
+---
+
+apiVersion:               cert-manager.io/v1
+kind:                     Certificate
+metadata:
+  name:                   scial-the-independent-friend-de
+spec:
+  dnsNames:
+                          - scial.the-independent-friend.de
+  secretName:             scial-the-independent-friend-de
+  issuerRef:
+    name:                 letsencrypt-staging
+    # name:                 letsencrypt-production
+    kind:                 ClusterIssuer
