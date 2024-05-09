@@ -41,6 +41,6 @@ spec:
                           - scial.the-independent-friend.de
   secretName:             scial-the-independent-friend-de
   issuerRef:
-    name:                 letsencrypt-staging
-    # name:                 letsencrypt-production
+    # name:                 letsencrypt-staging
+    name:                 letsencrypt-production
     kind:                 ClusterIssuer
