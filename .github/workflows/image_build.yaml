@@ -23,9 +23,6 @@ jobs:
       #   with:
       #     username: ${{ secrets.DOCKERHUB_USERNAME }}
       #     password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Get content
-        run: |
-          ls -lah ./images/debugging-tools
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
