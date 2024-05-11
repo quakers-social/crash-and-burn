@@ -14,6 +14,10 @@ PORT FORWART
 kubectl port-forward service/misskey-quakers-social -n argocd-aoa 3000:3000
 ```
 
+ANDROID APP
+-----------
+
+- [Milktea for Misskey(Mastodon)](https://play.google.com/store/apps/details?id=jp.panta.misskeyandroidclient&hl=de&gl=US)
 
 LINKS
 -----
