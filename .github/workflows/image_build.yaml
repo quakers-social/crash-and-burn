@@ -23,9 +23,9 @@ jobs:
       #   with:
       #     username: ${{ secrets.DOCKERHUB_USERNAME }}
       #     password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Pass pipeline
+      - name: Get content
         run: |
-          ls -lah ./images/debugging-tools
+          ls -lah ./
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
