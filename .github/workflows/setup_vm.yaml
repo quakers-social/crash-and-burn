@@ -1,7 +1,7 @@
 ---
 
 name: Run Ansible
-run-name: ${{ github.actor }} run setuo VM.
+run-name: ${{ github.actor }} run setup VM.
 on: push
 jobs:
   dryRun:
