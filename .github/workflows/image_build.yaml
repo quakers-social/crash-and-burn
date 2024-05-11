@@ -26,7 +26,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: images/debugging-tools
+          context: "{{defaultContext}}:images/debugging-tools"
           platforms: linux/amd64,linux/arm64
           push: false
           tags: olafradicke/quakers-social/debugging-tools:${{  github.ref_name }}
